@@ -59,7 +59,14 @@ project-root/
 │   │       ├── backup-procedures.md
 │   │       ├── update-procedures.md
 │   │       └── troubleshooting.md
-│   ├── 04_quality/
+│   ├── 04_after-action-reports/    # Post-completion analysis and retrospectives
+│   │   ├── features/               # Feature completion AARs
+│   │   │   └── feature-aar-template.md
+│   │   ├── projects/               # Project milestone AARs
+│   │   │   └── project-aar-template.md
+│   │   └── operations/             # Operational incident AARs
+│   │       └── incident-aar-template.md
+│   ├── 05_quality/
 │   │   ├── testing/                # Testing strategies and procedures
 │   │   │   ├── testing-strategy.md
 │   │   │   ├── test-cases.md
@@ -73,11 +80,11 @@ project-root/
 │   │       ├── review-guidelines.md
 │   │       ├── security-checklist.md
 │   │       └── performance-checklist.md
-│   ├── 05_for-agents/             # AI agent-specific documentation
+│   ├── 06_for-agents/             # AI agent-specific documentation
 │   │   ├── brtops-integration.md   # BRTOPS framework integration
 │   │   ├── project-context.md      # Project-specific AI context
 │   │   └── workflow-automation.md  # Automated workflow definitions
-│   └── 06_archive/
+│   └── 07_archive/
 │       ├── completed-features/     # Archived completed feature documentation
 │       ├── deprecated/             # Deprecated documentation and decisions
 │       ├── migrations/             # Migration records and procedures
@@ -136,19 +143,26 @@ project-root/
 - **monitoring/**: System monitoring, alerting, and observability
 - **maintenance/**: Ongoing system maintenance and procedures
 
-### `/docs/04_quality/`
+### `/docs/04_after-action-reports/`
+**Purpose**: Post-completion analysis and retrospectives (DEBRIEF outputs)
+- **features/**: After Action Reports for completed features
+- **projects/**: After Action Reports for project milestones
+- **operations/**: After Action Reports for operational incidents
+- **Format**: Standard BRTOPS AAR template with lessons learned and recommendations
+
+### `/docs/05_quality/`
 **Purpose**: Quality assurance standards and procedures
 - **testing/**: Testing strategies, test cases, and automation
 - **quality-gates/**: SEV-based quality gate definitions
 - **reviews/**: Code review guidelines and checklists
 
-### `/docs/05_for-agents/`
+### `/docs/06_for-agents/`
 **Purpose**: AI agent-specific documentation and context
 - **brtops-integration.md**: How BRTOPS is configured for this project
 - **project-context.md**: Project-specific context for AI agents
 - **workflow-automation.md**: Automated workflow definitions
 
-### `/docs/06_archive/`
+### `/docs/07_archive/`
 **Purpose**: Historical and archived documentation
 - **completed-features/**: Documentation for completed features
 - **deprecated/**: Deprecated decisions and documentation

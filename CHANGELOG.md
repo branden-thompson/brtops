@@ -2,6 +2,31 @@
 
 All notable changes to the BRTOPS framework are documented in this file.
 
+## [1.1.002] - 2025-08-21 - AAR Integration & Project Structure Enhancement
+
+### ✨ Added
+- **AAR Documentation Integration**
+  - Added `/docs/04_after-action-reports/` to universal project structure
+  - Integrated feature, project, and incident AAR templates
+  - Standardized AAR placement for all BRTOPS projects
+  - Renumbered documentation folders to accommodate AAR integration
+
+- **AAR Templates**
+  - `feature-aar-template.md` - Standard template for feature completion AARs
+  - `project-aar-template.md` - Template for project milestone AARs  
+  - `incident-aar-template.md` - Template for operational incident AARs
+
+### 🔧 Enhanced
+- **Project Structure Consistency** - Universal template now aligns with DEBRIEF command requirements
+- **Documentation Hierarchy** - Logical placement of AARs between operations and quality documentation
+
+### 📋 Documentation Updates
+- Updated universal project structure template with AAR integration
+- Folder renumbering: quality (04→05), for-agents (05→06), archive (06→07)
+- Added AAR folder purpose definitions and usage guidelines
+
+---
+
 ## [1.1.001] - 2025-08-21 - Directive Commands Addition
 
 ### ✨ Added
