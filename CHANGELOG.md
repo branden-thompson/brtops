@@ -40,10 +40,11 @@ All notable changes to the BRTOPS framework are documented in this file.
   - `MIGRATE FEATURE [name]` - Migrate specific features to new structure
   - `VALIDATE MIGRATION` - Verify migration completeness
 
-- **PREFLIGHT Command**
+- **Pre-Deployment Commands**
   - `PREFLIGHT` - Pre-deployment readiness checklist and validation
+  - `NOFLIGHT` - Do not proceed with current action - halt and assess
   - Comprehensive audit of version references, documentation, and artifacts
-  - GO/NOGO decision support with detailed findings
+  - GO/NOGO decision support with detailed findings and response protocols
 
 ### 🔧 Enhanced
 - **Claude Integration**

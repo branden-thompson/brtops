@@ -108,6 +108,12 @@
 **Checks**: Version references, documentation completeness, artifact validation, release readiness  
 **Output**: Comprehensive audit report with GOFLIGHT/NOFLIGHT recommendation
 
+### NOFLIGHT
+**Purpose**: Do not proceed with current action - halt and assess  
+**Usage**: `NOFLIGHT [optional reason]`  
+**Response**: Immediate SITREP, identify concerns, document decision, recommend next steps  
+**Protocol**: Preserves current state while addressing blockers before proceeding
+
 ## Command Integration Patterns
 
 ### Typical New Feature Workflow

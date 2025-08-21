@@ -57,6 +57,7 @@
 
 ### Control Commands
 - **"GOFLIGHT"** → Auto-proceed immediately without confirmation
+- **"NOFLIGHT"** → Do not proceed with current action - halt and assess
 - **"PREFLIGHT"** → Pre-deployment readiness validation and GO/NOGO decision
 - **"SITREP"** → Generate formatted situation report
 - **"OPSCHECK"** → Comprehensive system verification
@@ -177,6 +178,14 @@ Proceeding with security analysis...
 - Track gate completion progress
 
 ## Emergency Procedures
+
+### NOFLIGHT Command Response
+1. **Immediate SITREP**: Generate current status report
+2. **Identify NOFLIGHT Reason**: Determine why proceeding is not advisable
+3. **Request Clarification**: If reason unclear, prompt user for specific concerns
+4. **Document Decision**: Record NOFLIGHT decision per BRTOPS protocols
+5. **Recommend Next Steps**: Suggest specific actions to address concerns
+6. **Await Instructions**: Prompt user for next course of action
 
 ### ABORT Command Response
 1. Immediately halt all current operations
