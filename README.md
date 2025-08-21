@@ -1,7 +1,7 @@
-# BRTOPS v1.0.000
+# BRTOPS v1.1.0
 ## Military-Precision Development Operations for Human/AI Teams
 
-[![Version](https://img.shields.io/badge/version-1.0.000-blue.svg)](https://github.com/bthompso/brtops/releases)
+[![Version](https://img.shields.io/badge/version-1.1.0-blue.svg)](https://github.com/bthompso/brtops/releases)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 [![Documentation](https://img.shields.io/badge/docs-complete-brightgreen.svg)](docs/)
 
@@ -126,10 +126,17 @@ MIT License - see [LICENSE](LICENSE) for details.
 - ✅ Essential quality gates
 - ✅ Claude integration
 
-### Version 1.1.x (Expansion)
+### Version 1.1.0 (Structure & Workflow Enhancement)
+- ✅ Enhanced project management commands (INIT PROJECT, INIT FEATURE, CREATE BRANCH)
+- ✅ Complete project structure templates with 6-folder documentation system
+- ✅ Git workflow integration with branch management and commit templates
+- ✅ Advanced status reporting (SITREP PROJECT, SITREP FEATURE, SITREP BRANCHES)
+- ✅ Structure validation commands (CHECK STRUCTURE, CHECK GATES, CHECK BRANCHES)
+- ✅ Project migration tools for existing projects
+
+### Version 1.2.x (Agent Expansion)
 - 🔄 ChatGPT integration
-- 🔄 Advanced project templates
-- 🔄 Automated tool integrations
+- 🔄 Advanced automation integrations
 
 ### Version 1.2.x (Intelligence)
 - 📋 Gemini integration

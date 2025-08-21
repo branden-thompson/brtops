@@ -19,13 +19,41 @@
 
 ## BRTOPS Command Recognition
 
-### Phase Commands
+### Core Phase Commands (v1.0.0)
 - **"GO RCC"** → Initiate Requirements & Context Collection
 - **"GO PLAN"** → Begin Strategic Planning & Architecture  
 - **"GO CODE"** → Start Development & Implementation
 - **"GO FINAL"** → Execute Quality Assurance & Completion
 - **"GO VAL"** → Begin Post-deployment Validation
 - **"DEBRIEF"** → Present findings and retrospective (AAR)
+
+### Enhanced Project Management Commands (v1.1.0)
+- **"INIT PROJECT [TYPE] SEV-[X] [name]"** → Initialize new project with structure
+- **"INIT FEATURE SEV-[X] [name]"** → Initialize feature with 6-folder structure
+- **"CREATE BRANCH [phase]"** → Create phase-appropriate branch
+- **"COMMIT PHASE [phase] [message]"** → Structured commit with templates
+- **"MERGE READY"** → Validate merge readiness with quality gates
+- **"BRANCH CLEANUP"** → Clean up completed feature branches
+
+### Enhanced Documentation Commands (v1.1.0)
+- **"CREATE DOCS [feature-name]"** → Auto-create 6-folder structure
+- **"UPDATE DOCS [phase]"** → Update phase-specific documentation
+- **"ARCHIVE DOCS [feature-name]"** → Move completed docs to archive
+
+### Enhanced Status Commands (v1.1.0)
+- **"SITREP PROJECT"** → Comprehensive project status with structure
+- **"SITREP FEATURE [name]"** → Feature-specific detailed status
+- **"SITREP BRANCHES"** → Branch status across project
+
+### Structure Validation Commands (v1.1.0)
+- **"CHECK STRUCTURE"** → Validate project structure compliance
+- **"CHECK GATES"** → Validate quality gate status
+- **"CHECK BRANCHES"** → Validate branch health and compliance
+
+### Migration Commands (v1.1.0)
+- **"MIGRATE PROJECT"** → Migrate existing project to v1.1.0 structure
+- **"MIGRATE FEATURE [name]"** → Migrate feature to new structure
+- **"VALIDATE MIGRATION"** → Verify migration completeness
 
 ### Control Commands
 - **"GOFLIGHT"** → Auto-proceed immediately without confirmation
@@ -231,7 +259,7 @@ GO CODE → [Development] → RUN GATES → [Gates pass/fail] → GO FINAL
 
 ---
 
-**BRTOPS Version**: 1.0.000  
+**BRTOPS Version**: 1.1.0  
 **Last Updated**: 2025-08-21  
 **Compatibility**: Claude Code and Claude Web  
 **Status**: Production Ready
