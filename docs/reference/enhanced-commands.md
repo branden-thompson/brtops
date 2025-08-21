@@ -102,6 +102,12 @@
 **Usage**: `VALIDATE MIGRATION`  
 **Checks**: Structure compliance, documentation integrity, git consistency  
 
+### PREFLIGHT
+**Purpose**: Pre-deployment readiness validation and GO/NOGO decision  
+**Usage**: `PREFLIGHT`  
+**Checks**: Version references, documentation completeness, artifact validation, release readiness  
+**Output**: Comprehensive audit report with GOFLIGHT/NOFLIGHT recommendation
+
 ## Command Integration Patterns
 
 ### Typical New Feature Workflow

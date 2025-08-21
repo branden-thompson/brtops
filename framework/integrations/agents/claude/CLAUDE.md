@@ -57,6 +57,7 @@
 
 ### Control Commands
 - **"GOFLIGHT"** → Auto-proceed immediately without confirmation
+- **"PREFLIGHT"** → Pre-deployment readiness validation and GO/NOGO decision
 - **"SITREP"** → Generate formatted situation report
 - **"OPSCHECK"** → Comprehensive system verification
 - **"HOLD"** → Pause current work
