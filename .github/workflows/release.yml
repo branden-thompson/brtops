@@ -1,0 +1,56 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Get version from tag
+      id: get_version
+      run: echo "VERSION=${GITHUB_REF#refs/tags/v}" >> $GITHUB_OUTPUT
+    
+    - name: Create Release
+      uses: actions/create-release@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        tag_name: ${{ github.ref }}
+        release_name: BRTOPS v${{ steps.get_version.outputs.VERSION }}
+        body: |
+          # BRTOPS v${{ steps.get_version.outputs.VERSION }}
+          
+          ## Military-Precision Development Operations for Human/AI Teams
+          
+          ### What's New
+          See [CHANGELOG.md](CHANGELOG.md) for detailed changes.
+          
+          ### Quick Start
+          ```bash
+          # Download and setup BRTOPS
+          curl -L https://github.com/bthompso/brtops/archive/v${{ steps.get_version.outputs.VERSION }}.tar.gz | tar -xz
+          
+          # For Claude users
+          cp brtops-${{ steps.get_version.outputs.VERSION }}/framework/integrations/agents/claude/CLAUDE.md ~/.claude/
+          
+          # Start using BRTOPS
+          echo "GUIDE ACTIVE" | claude
+          echo "MINOR SEV-2 My First BRTOPS Project" | claude
+          ```
+          
+          ### Documentation
+          - [Getting Started](docs/getting-started/README.md)
+          - [Command Reference](docs/reference/command-reference.md)
+          - [Agent Setup](docs/guides/agent-setup/)
+          
+          ### Support
+          - Report issues: [GitHub Issues](https://github.com/bthompso/brtops/issues)
+          - Documentation: [docs/](docs/)
+          - Examples: [docs/examples/](docs/examples/)
+        draft: false
+        prerelease: false
