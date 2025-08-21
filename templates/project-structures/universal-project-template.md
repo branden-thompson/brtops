@@ -132,10 +132,18 @@ project-root/
 - **technology-stack.md**: Technology choices and rationale
 
 ### `/docs/02_features/`
-**Purpose**: Feature-specific documentation using 6-folder structure
-- Each feature gets its own folder with standardized structure
+**Purpose**: Feature-specific documentation using enhanced 6-folder structure (v1.1.003)
+- Each feature gets its own folder with standardized enhanced structure
 - **feature-index.md**: Master registry of all features and their status
 - Follows BRTOPS phase-based documentation lifecycle
+
+#### Enhanced 6-Folder Structure Requirements
+- **01-objectives/**: Requirements, context, and constraints (ALL files REQUIRED)
+- **02-analysis/**: Risk assessment and technical analysis (ALL files REQUIRED)
+- **03-architecture-design/**: System design and architecture decisions (ALL files REQUIRED)
+- **04-development/**: Implementation tracking and logs (ALL files REQUIRED)
+- **05-debugging/**: Troubleshooting and issue resolution (REQUIRED for SEV-0/SEV-1)
+- **06-key_learnings/**: Knowledge capture and future reference (ALL files REQUIRED)
 
 ### `/docs/03_operations/`
 **Purpose**: Operational procedures and system management
