@@ -2,6 +2,21 @@
 
 All notable changes to the BRTOPS framework are documented in this file.
 
+## [1.1.001] - 2025-08-21 - Directive Commands Addition
+
+### ✨ Added
+- **Directive Commands System**
+  - `DIRECTIVE [instruction]` - Establish persistent operational instructions (equivalent to Claude '#' command)
+  - `DIRECTIVE SCOPE [definition]` - Define scope boundaries for current operations
+  - `ROE [rules]` - Rules of Engagement for operational constraints and permissions
+  - `AOR [areas]` - Areas of Responsibility for ownership and boundary definition
+
+### 🔧 Enhanced
+- **Claude Integration** - Updated with directive command recognition patterns
+- **Operational Control** - Enhanced command structure for better project governance
+
+---
+
 ## [1.1.0] - 2025-08-21 - Structure & Workflow Enhancement
 
 ### ✨ Added

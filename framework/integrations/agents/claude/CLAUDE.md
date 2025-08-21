@@ -65,6 +65,12 @@
 - **"RESUME"** → Continue from pause
 - **"ABORT"** → Emergency stop all operations
 
+### Directive Commands (v1.1.001)
+- **"DIRECTIVE [instruction]"** → Establish persistent operational instruction (equivalent to Claude '#' command)
+- **"DIRECTIVE SCOPE [definition]"** → Define scope boundaries for current operation
+- **"ROE [rules]"** → Rules of Engagement - operational constraints and permissions
+- **"AOR [areas]"** → Areas of Responsibility - define ownership and boundaries
+
 ### Collaboration Commands
 - **"HUM LEAD"** → Switch to human-led mode
 - **"AI LEAD"** → Switch to AI-led mode  
@@ -269,7 +275,7 @@ GO CODE → [Development] → RUN GATES → [Gates pass/fail] → GO FINAL
 
 ---
 
-**BRTOPS Version**: 1.1.0  
+**BRTOPS Version**: 1.1.001  
 **Last Updated**: 2025-08-21  
 **Compatibility**: Claude Code and Claude Web  
 **Status**: Production Ready
