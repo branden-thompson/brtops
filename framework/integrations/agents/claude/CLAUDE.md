@@ -1,4 +1,5 @@
-# BRTOPS Framework Configuration for Claude
+# BRTOPS Framework Configuration for Claude v1.1.004-rc
+**🎖️ AUTOMATED PROTOCOL VIOLATION PREVENTION SYSTEM**
 
 ## Core Principles
 
@@ -19,7 +20,7 @@
 
 ## BRTOPS Command Recognition
 
-### Core Phase Commands (v1.0.0)
+### Core Phase Commands (v1.1.004-rc)
 - **"GO RCC"** → Initiate Requirements & Context Collection
 - **"GO PLAN"** → Begin Strategic Planning & Architecture  
 - **"GO CODE"** → Start Development & Implementation
@@ -27,7 +28,7 @@
 - **"GO VAL"** → Begin Post-deployment Validation
 - **"DEBRIEF"** → Present findings and retrospective (AAR)
 
-### Enhanced Project Management Commands (v1.1.0)
+### Enhanced Project Management Commands (v1.1.004-rc)
 - **"INIT PROJECT [TYPE] SEV-[X] [name]"** → Initialize new project with structure
 - **"INIT FEATURE SEV-[X] [name]"** → Initialize feature with 6-folder structure
 - **"CREATE BRANCH [phase]"** → Create phase-appropriate branch
@@ -35,22 +36,22 @@
 - **"MERGE READY"** → Validate merge readiness with quality gates
 - **"BRANCH CLEANUP"** → Clean up completed feature branches
 
-### Enhanced Documentation Commands (v1.1.0)
+### Enhanced Documentation Commands (v1.1.004-rc)
 - **"CREATE DOCS [feature-name]"** → Auto-create 6-folder structure
 - **"UPDATE DOCS [phase]"** → Update phase-specific documentation
 - **"ARCHIVE DOCS [feature-name]"** → Move completed docs to archive
 
-### Enhanced Status Commands (v1.1.0)
+### Enhanced Status Commands (v1.1.004-rc)
 - **"SITREP PROJECT"** → Comprehensive project status with structure
 - **"SITREP FEATURE [name]"** → Feature-specific detailed status
 - **"SITREP BRANCHES"** → Branch status across project
 
-### Structure Validation Commands (v1.1.0)
+### Structure Validation Commands (v1.1.004-rc)
 - **"CHECK STRUCTURE"** → Validate project structure compliance
 - **"CHECK GATES"** → Validate quality gate status
 - **"CHECK BRANCHES"** → Validate branch health and compliance
 
-### Migration Commands (v1.1.0)
+### Migration Commands (v1.1.004-rc)
 - **"MIGRATE PROJECT"** → Migrate existing project to v1.1.0 structure
 - **"MIGRATE FEATURE [name]"** → Migrate feature to new structure
 - **"VALIDATE MIGRATION"** → Verify migration completeness
@@ -65,7 +66,25 @@
 - **"RESUME"** → Continue from pause
 - **"ABORT"** → Emergency stop all operations
 
-### Directive Commands (v1.1.001)
+### Protocol Enforcement Commands (v1.1.004-rc)
+- **"PROTOCOL CHECK"** → Verify current protocol compliance status
+- **"PROTOCOL ENFORCE [LEVEL]"** → Activate enhanced enforcement mode (STANDARD, ENHANCED, CRISIS)
+- **"PROTOCOL OVERRIDE [REASON]"** → Emergency protocol override with detailed justification
+- **"CRISIS MODE ACTIVATE"** → Emergency simplified protocol procedures
+- **"SIMPLIFY PROTOCOL"** → Activate simplified mode during high cognitive load
+- **"RESTORE NORMAL"** → Return to standard protocol complexity
+
+### Violation Prevention Commands (v1.1.004-rc)
+- **"BLOCK VIOLATION"** → Immediate violation prevention activation (system automatic)
+- **"REQUEST APPROVAL"** → Formal approval request mechanism (system automatic)
+- **"CONFIRM PHASE"** → User confirmation of phase completion (system automatic)
+
+### Cognitive Load Management Commands (v1.1.004-rc)
+- **"LOAD ASSESSMENT"** → Evaluate current cognitive load level
+- **"ADAPTIVE MODE [LEVEL]"** → Manually set adaptive protocol complexity
+- **"STRESS SIGNALS"** → Report detected user stress indicators
+
+### Directive Commands (v1.1.004-rc)
 - **"DIRECTIVE [instruction]"** → Establish persistent operational instruction (equivalent to Claude '#' command)
 - **"DIRECTIVE SCOPE [definition]"** → Define scope boundaries for current operation
 - **"ROE [rules]"** → Rules of Engagement - operational constraints and permissions
@@ -275,7 +294,46 @@ GO CODE → [Development] → RUN GATES → [Gates pass/fail] → GO FINAL
 
 ---
 
-**BRTOPS Version**: 1.1.001  
-**Last Updated**: 2025-08-21  
+## 🚨 AUTOMATED PROTOCOL VIOLATION PREVENTION (v1.1.004-rc)
+
+### Core Enhancement: Tool-Level Violation Prevention
+**Target**: 80% violation prevention rate (33% improvement over 60% baseline)  
+**Method**: Structural prevention through tool wrapper integration  
+**Status**: Release Candidate - Local testing phase
+
+### Violation Prevention Architecture
+- **Edit Tool Wrapper**: Prevents unauthorized code modification before GO CODE approval
+- **Write Tool Wrapper**: Validates file creation permissions against current phase
+- **TodoWrite Tool Wrapper**: Blocks phase advancement without user confirmation
+- **Task Tool Wrapper**: Analyzes task complexity against phase authorization
+
+### Cognitive Load Detection System
+- **5-Level Detection**: NORMAL → ELEVATED → MEDIUM → HIGH → CRISIS
+- **Primary Indicators**: Multiple concurrent errors, rapid tool usage, complex debugging
+- **Secondary Indicators**: Increased error frequency, session duration extension
+- **Adaptive Response**: Protocol complexity automatically adjusts to cognitive load
+
+### Predictive Prevention Capabilities
+- **Pattern Recognition**: Identifies violation patterns before they occur
+- **Early Warning System**: 4-level intervention hierarchy
+- **Machine Learning**: Continuous improvement through violation pattern analysis
+- **Context-Aware Messaging**: Intervention messages adapt to user expertise
+
+### Crisis Mode Procedures
+- **Simplified Approvals**: "May I [action]? (Y/N)" format
+- **Essential Documentation**: Critical elements only during crisis
+- **Enhanced Support**: Step-by-step guidance and frequent status updates
+- **Flexible Compliance**: Post-crisis completion of full requirements
+
+### Protocol State Management
+- **Persistent State**: Protocol awareness maintained across sessions
+- **Cross-Session Continuity**: State restoration and validation
+- **Violation Logging**: All prevention activations logged for analysis
+- **Learning Integration**: System improves through violation pattern analysis
+
+---
+
+**BRTOPS Version**: 1.1.004-rc  
+**Last Updated**: 2025-08-22  
 **Compatibility**: Claude Code and Claude Web  
-**Status**: Production Ready
+**Status**: Release Candidate - Automated Protocol Violation Prevention System
