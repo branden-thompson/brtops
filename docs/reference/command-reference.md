@@ -1,48 +1,54 @@
 # BRTOPS Command Reference v1.0.004
 
-## Phase Names (Normalized)
+## Core Phase Commands (Normalized)
 
 ### RCC (Requirements & Context Collection)
 **Purpose**: Discovery phase to gather requirements and context  
-**Usage**: `GO RCC` or `GO for RCC`  
-**Normal**: "Requirements & Context Collection"  
-**Next**: PLAN or GOFLIGHT  
+**Usage**: `RCC`, `GO RCC`, `INIT RCC`, `START RCC`  
+**Description**: "Requirements & Context Collection"  
+**Next Phase**: PLAN or GOFLIGHT  
 **Authority**: Any user  
 
 ### PLAN (Strategic Planning)
 **Purpose**: Strategic planning and architecture design  
-**Usage**: `GO PLAN` or `GO for PLAN`  
-**Normal**: "Strategic Planning"  
-**Next**: CODE or GOFLIGHT  
+**Usage**: `PLAN`, `GO PLAN`, `INIT PLAN`, `START PLAN`  
+**Description**: "Strategic Planning & Architecture"  
+**Next Phase**: CODE or GOFLIGHT  
 **Authority**: Any user  
 
 ### CODE (Implementation)
 **Purpose**: Development and implementation phase  
-**Usage**: `GO CODE` or `GO for CODE`  
-**Normal**: "Development & Implementation"  
-**Next**: FINAL or GOFLIGHT  
+**Usage**: `CODE`, `GO CODE`, `INIT CODE`, `START CODE`  
+**Description**: "Development & Implementation"  
+**Next Phase**: FINAL or GOFLIGHT  
 **Authority**: Any user  
 
 ### FINAL (Quality Assurance)
 **Purpose**: Quality assurance and completion tasks  
-**Usage**: `GO FINAL` or `GO for FINAL`  
-**Normal**: "Quality Assurance"  
-**Next**: VAL or GOFLIGHT  
+**Usage**: `FINAL`, `GO FINAL`, `INIT FINAL`, `START FINAL`  
+**Description**: "Quality Assurance & Completion"  
+**Next Phase**: VAL or GOFLIGHT  
 **Authority**: Any user  
 
 ### VAL (Post-deployment Validation)
 **Purpose**: Post-deployment validation and verification  
-**Usage**: `GO VAL` or `GO for VAL`  
-**Normal**: "Post-deployment Validation"  
-**Next**: DEBRIEF  
+**Usage**: `VAL`, `GO VAL`, `INIT VAL`, `START VAL`  
+**Description**: "Post-deployment Validation"  
+**Next Phase**: DEBRIEF  
 **Authority**: Any user  
 
 ### DEBRIEF (Retrospective)
 **Purpose**: Retrospective using AAR (After Action Report)  
-**Usage**: `DEBRIEF` or `GO DEBRIEF`  
-**Normal**: "After Action Report"  
-**Next**: Project completion  
-**Authority**: Any user  
+**Usage**: `DEBRIEF`, `GO DEBRIEF`, `INIT DEBRIEF`, `START DEBRIEF`  
+**Description**: "After Action Report & Retrospective"  
+**Next Phase**: Project completion  
+**Authority**: Any user
+
+**Execution Flexibility**: All phase commands support multiple execution patterns:
+- **Direct**: `RCC`, `PLAN`, `CODE` - Direct phase execution
+- **GO Pattern**: `GO RCC`, `GO PLAN`, `GO CODE` - Traditional GO execution  
+- **INIT Pattern**: `INIT RCC`, `INIT PLAN`, `INIT CODE` - Initialize phase
+- **START Pattern**: `START RCC`, `START PLAN`, `START CODE` - Start phase  
 
 ## Control Commands
 
@@ -490,17 +496,32 @@ Examples:
 
 ### Standard Flow
 ```
-Feature Request → GO RCC → GO PLAN → GO CODE → GO FINAL → GO VAL → DEBRIEF
+Feature Request → RCC → PLAN → CODE → FINAL → VAL → DEBRIEF
 ```
 
 ### With Quality Gates
 ```
-GO CODE → GATECHECK → GO FINAL → PR → GATECHECK → GO VAL
+CODE → GATECHECK → FINAL → PR → GATECHECK → VAL
 ```
 
 ### Security & Performance Integration
 ```
 Implementation → OPSSEC → PERFCHK → GATECHECK → Deployment
+```
+
+### Alternative Execution Patterns
+```
+# Direct execution
+RCC → PLAN → CODE → FINAL → VAL → DEBRIEF
+
+# GO pattern (traditional)
+GO RCC → GO PLAN → GO CODE → GO FINAL → GO VAL → GO DEBRIEF
+
+# INIT pattern
+INIT RCC → INIT PLAN → INIT CODE → INIT FINAL → INIT VAL → INIT DEBRIEF
+
+# Mixed patterns (user preference)
+RCC → GO PLAN → START CODE → FINAL → GO VAL → DEBRIEF
 ```
 
 ### Emergency Flow (Traditional)
@@ -520,11 +541,26 @@ Minor Issue → ALERT-3 → DOCUMENT → QUEUE → Continue normal flow
 ### Typical Workflow
 ```
 User: "MAJOR SEV-1 User Dashboard Enhancement"
-AI: "GO RCC for MAJOR SEV-1 feature"
+AI: "Starting RCC for MAJOR SEV-1 feature"
 User: "GOFLIGHT"
 AI: [Proceeds through RCC → PLAN → CODE → FINAL → VAL → DEBRIEF]
 User: "SITREP"
 AI: [Shows current status]
+```
+
+### Phase Command Flexibility
+```
+User: "RCC"
+AI: "🔍 RCC initiated: Requirements & Context Collection"
+
+User: "INIT PLAN"  
+AI: "📋 PLAN initialized: Strategic Planning & Architecture phase"
+
+User: "START CODE"
+AI: "⚡ CODE started: Development & Implementation phase"
+
+User: "GO FINAL"
+AI: "🛡️ FINAL initiated: Quality Assurance & Completion"
 ```
 
 ### Enhanced Analysis Pattern
