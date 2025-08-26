@@ -1,46 +1,46 @@
-# BRTOPS Command Reference v1.0.000
+# BRTOPS Command Reference v1.0.004
 
-## Phase Commands
+## Phase Names (Normalized)
 
-### GO RCC (Requirements & Context Collection)
-**Purpose**: Start discovery phase to gather requirements and context  
-**Usage**: `GO RCC`  
-**Normal**: "Start Discovery"  
-**Next**: GO PLAN or GOFLIGHT  
+### RCC (Requirements & Context Collection)
+**Purpose**: Discovery phase to gather requirements and context  
+**Usage**: `GO RCC` or `GO for RCC`  
+**Normal**: "Requirements & Context Collection"  
+**Next**: PLAN or GOFLIGHT  
 **Authority**: Any user  
 
-### GO PLAN (Strategic Planning)
-**Purpose**: Begin strategic planning and architecture design  
-**Usage**: `GO PLAN`  
-**Normal**: "Start Planning"  
-**Next**: GO CODE or GOFLIGHT  
+### PLAN (Strategic Planning)
+**Purpose**: Strategic planning and architecture design  
+**Usage**: `GO PLAN` or `GO for PLAN`  
+**Normal**: "Strategic Planning"  
+**Next**: CODE or GOFLIGHT  
 **Authority**: Any user  
 
-### GO CODE (Implementation)
-**Purpose**: Start development and implementation phase  
-**Usage**: `GO CODE`  
-**Normal**: "Start Implementation"  
-**Next**: GO FINAL or GOFLIGHT  
+### CODE (Implementation)
+**Purpose**: Development and implementation phase  
+**Usage**: `GO CODE` or `GO for CODE`  
+**Normal**: "Development & Implementation"  
+**Next**: FINAL or GOFLIGHT  
 **Authority**: Any user  
 
-### GO FINAL (Quality Assurance)
-**Purpose**: Execute quality assurance and completion tasks  
-**Usage**: `GO FINAL`  
-**Normal**: "Start Finalization"  
-**Next**: GO VAL or GOFLIGHT  
+### FINAL (Quality Assurance)
+**Purpose**: Quality assurance and completion tasks  
+**Usage**: `GO FINAL` or `GO for FINAL`  
+**Normal**: "Quality Assurance"  
+**Next**: VAL or GOFLIGHT  
 **Authority**: Any user  
 
-### GO VAL (Post-deployment Validation)
-**Purpose**: Start post-deployment validation and verification  
-**Usage**: `GO VAL`  
-**Normal**: "Start Validation"  
+### VAL (Post-deployment Validation)
+**Purpose**: Post-deployment validation and verification  
+**Usage**: `GO VAL` or `GO for VAL`  
+**Normal**: "Post-deployment Validation"  
 **Next**: DEBRIEF  
 **Authority**: Any user  
 
 ### DEBRIEF (Retrospective)
-**Purpose**: Present findings and conduct retrospective using AAR  
-**Usage**: `DEBRIEF`  
-**Normal**: "Retrospective"  
+**Purpose**: Retrospective using AAR (After Action Report)  
+**Usage**: `DEBRIEF` or `GO DEBRIEF`  
+**Normal**: "After Action Report"  
 **Next**: Project completion  
 **Authority**: Any user  
 
@@ -60,9 +60,9 @@
 **Authority**: Any user  
 
 ### OPSCHECK
-**Purpose**: Comprehensive system status verification  
+**Purpose**: Comprehensive system status verification + protocol compliance check  
 **Usage**: `OPSCHECK`  
-**Context**: Operations check terminology  
+**Context**: Operations check terminology - includes protocol verification  
 **Authority**: Any user  
 
 ### HOLD
@@ -85,6 +85,78 @@
 ### RESET
 **Purpose**: Start over from beginning  
 **Usage**: `RESET`  
+**Authority**: Any user
+
+## Alert System
+
+### ALERT-1 (Crisis Mode)
+**Purpose**: Emergency procedures - halt all non-essential work, focus exclusively on critical problem  
+**Usage**: `ALERT-1 [critical issue description]`  
+**Protocol**:
+- ❌ HALT all non-essential work immediately
+- 🎯 FOCUS exclusively on identified critical problem  
+- 🔧 ENHANCED DEBUG, DOCUMENT, SITREP capabilities active
+- 📊 MANDATORY SITREP after each major state change
+- 🖥️ PERSISTENT VIEW in terminal (when supported)
+**Authority**: Any user
+
+### ALERT-2 (Serious Non-Emergency)
+**Purpose**: Significant issue requiring focus shift - pause non-essential work at stable checkpoint  
+**Usage**: `ALERT-2 [serious issue description]`  
+**Protocol**:
+- 🛑 PAUSE non-essential work at next stable checkpoint
+- 📝 DOCUMENT current state before refocusing
+- 🔧 ENHANCED DEBUG, DOCUMENT, SITREP protocols active
+- 🎯 REFOCUS on identified problem with full attention
+**Authority**: Any user
+
+### ALERT-3 (Minor/Medium Severity)
+**Purpose**: Issue noted but not requiring immediate action - continue to stable state  
+**Usage**: `ALERT-3 [issue description]`  
+**Protocol**:
+- 📝 NOTE issue for future addressing
+- ✅ CONTINUE current work to stable state
+- 📚 DOCUMENT all context before potential auto-compacting
+- 🕒 QUEUE for next appropriate work cycle
+**Authority**: Any user
+
+## Enhanced Debugging Commands
+
+### ASSESS SCOPE [ISSUE]
+**Purpose**: Force explicit scoping before major debugging efforts  
+**Usage**: `ASSESS SCOPE [detailed issue description]`  
+**Protocol**:
+1. Define current working functionality percentage
+2. Define maximum acceptable functionality loss
+3. Set time investment limit (2-hour checkpoints)
+4. Establish rollback criteria upfront
+**Authority**: Any user
+
+### MAP DEPS [SYSTEM]
+**Purpose**: Document system dependencies before implementing changes  
+**Usage**: `MAP DEPS [system name]`  
+**Output**:
+```
+DEPENDENCY MAP: [System Name]
+Core Dependencies (break system): [list]
+Optional Dependencies (degrade gracefully): [list]  
+External Dependencies (may cause issues): [list]
+```
+**Authority**: Any user
+
+### PROD DEBUG [ISSUE]
+**Purpose**: Production-focused debugging protocols with enhanced safeguards  
+**Usage**: `PROD DEBUG [production issue]`  
+**Requirements**:
+- All debugging must occur in production build environment
+- Document development vs. production behavioral differences  
+- Circuit breaker patterns required for any API retry fixes
+**Authority**: Any user
+
+### GO for DEBUG START [ISSUE]
+**Purpose**: Initiate focused debugging session with specific issue targeting  
+**Usage**: `GO for DEBUG START [issue description]`  
+**Context**: Enhanced GO command pattern for debugging operations  
 **Authority**: Any user  
 
 ## Collaboration Commands
@@ -238,9 +310,16 @@ Feature Request → GO RCC → GO PLAN → GO CODE → GO FINAL → GO VAL → D
 GO CODE → RUN GATES → GO FINAL → PEER REV → RUN GATES → GO VAL
 ```
 
-### Emergency Flow
+### Emergency Flow (Traditional)
 ```
 ABORT → ASSESS → ROLLBACK → RESUME or RESET
+```
+
+### Alert System Flow
+```
+Critical Issue → ALERT-1 → ASSESS SCOPE → MAP DEPS → PROD DEBUG → SITREP
+Serious Issue → ALERT-2 → ASSESS SCOPE → Enhanced protocols → SITREP  
+Minor Issue → ALERT-3 → DOCUMENT → QUEUE → Continue normal flow
 ```
 
 ## Command Combinations
@@ -250,9 +329,28 @@ ABORT → ASSESS → ROLLBACK → RESUME or RESET
 User: "MAJOR SEV-1 User Dashboard Enhancement"
 AI: "GO RCC for MAJOR SEV-1 feature"
 User: "GOFLIGHT"
-AI: [Proceeds through phases]
+AI: [Proceeds through RCC → PLAN → CODE → FINAL → VAL → DEBRIEF]
 User: "SITREP"
 AI: [Shows current status]
+```
+
+### Enhanced GO Command Pattern
+```
+User: "GO for DEBUG START infinite retry loops"
+AI: "🔧 DEBUG START initiated for infinite retry loops"
+User: "ASSESS SCOPE"
+AI: [Scoping analysis with functionality impact assessment]
+User: "MAP DEPS session system"
+AI: [Dependency mapping for session architecture]
+```
+
+### Alert System Example
+```
+User: "ALERT-1 Production system down"
+AI: "🚨 CRISIS MODE ACTIVATED - halting all non-essential work"
+AI: "📊 SITREP: System status, focusing exclusively on production issue"
+User: "PROD DEBUG production deployment failure"
+AI: [Production-focused debugging with enhanced protocols]
 ```
 
 ### Collaboration Example
@@ -263,10 +361,10 @@ User: "AI TAKE implementation tasks"
 AI: "🤖 Taking control of implementation"
 ```
 
-### Emergency Example
+### System Verification Example
 ```
 User: "OPSCHECK"
-AI: [Comprehensive system verification]
-User: "ABORT" (if issues found)
+AI: [Comprehensive system verification + protocol compliance check]
+User: "ABORT" (if critical issues found)
 AI: [Emergency stop all operations]
 ```
