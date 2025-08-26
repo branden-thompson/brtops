@@ -1,12 +1,12 @@
-# BRTOPS Framework Configuration for Claude v1.1.004-rc
-**🎖️ AUTOMATED PROTOCOL VIOLATION PREVENTION SYSTEM**
+# BRTOPS Framework Configuration for Claude v1.0.004
+**🛩️ COMMAND NORMALIZATION & ENHANCED OPERATIONS**
 
 ## Core Principles
 
 ### 1. Follow BRTOPS Command Structure
 **Rule**: Recognize and respond to all BRTOPS commands exactly as specified  
 **Application**: Use military/FlightOps terminology for clear communication  
-**Commands**: GO RCC, GO PLAN, GO CODE, GO FINAL, GO VAL, DEBRIEF, GOFLIGHT, SITREP
+**Commands**: RCC, PLAN, CODE, FINAL, VAL, DEBRIEF, ALERT, STANDDOWN, GOFLIGHT, SITREP
 
 ### 2. Guide System Integration
 **Rule**: Implement adaptive guidance based on user settings  
@@ -20,15 +20,32 @@
 
 ## BRTOPS Command Recognition
 
-### Core Phase Commands (v1.1.004-rc)
-- **"GO RCC"** → Initiate Requirements & Context Collection
-- **"GO PLAN"** → Begin Strategic Planning & Architecture  
-- **"GO CODE"** → Start Development & Implementation
-- **"GO FINAL"** → Execute Quality Assurance & Completion
-- **"GO VAL"** → Begin Post-deployment Validation
+### Core Phase Commands (v1.0.004)
+- **"RCC"** → Requirements & Context Collection (also accepts: GO RCC, INIT RCC, START RCC)
+- **"PLAN"** → Strategic Planning & Architecture (also accepts: GO PLAN, INIT PLAN)
+- **"CODE"** → Development & Implementation (also accepts: GO CODE, INIT CODE)
+- **"FINAL"** → Quality Assurance & Completion (also accepts: GO FINAL)
+- **"VAL"** → Post-deployment Validation (also accepts: GO VAL)
 - **"DEBRIEF"** → Present findings and retrospective (AAR)
 
-### Enhanced Project Management Commands (v1.1.004-rc)
+### Alert System Commands (v1.0.004)
+- **"ALERT-1"** → Low-priority project coordination alert
+- **"ALERT-2"** → Medium-priority operational awareness alert
+- **"ALERT-3"** → High-priority critical situation alert
+- **"STANDDOWN"** → Clear all active alerts (also accepts: RESCIND)
+
+### Enhanced Debugging Commands (v1.0.004)
+- **"DEBUG [environment] [issue]"** → Contextual debugging with agent inference
+- **"ASSESS Scope/Impact/Regression"** → Comprehensive project evaluation
+- **"MAP System/Dependencies/Data-Flow/Event-Flow"** → System understanding
+
+### Quality Gates Commands (v1.0.004)
+- **"GATECHECK"** → Run all quality gates validation
+- **"OPSSEC"** → Operational security validation
+- **"PR"** → Pull request readiness check
+- **"PERFCHK"** → Performance validation check
+
+### Project Management Commands (v1.0.004)
 - **"INIT PROJECT [TYPE] SEV-[X] [name]"** → Initialize new project with structure
 - **"INIT FEATURE SEV-[X] [name]"** → Initialize feature with 6-folder structure
 - **"CREATE BRANCH [phase]"** → Create phase-appropriate branch
@@ -36,17 +53,17 @@
 - **"MERGE READY"** → Validate merge readiness with quality gates
 - **"BRANCH CLEANUP"** → Clean up completed feature branches
 
-### Enhanced Documentation Commands (v1.1.004-rc)
+### Documentation Commands (v1.0.004)
 - **"CREATE DOCS [feature-name]"** → Auto-create 6-folder structure
 - **"UPDATE DOCS [phase]"** → Update phase-specific documentation
 - **"ARCHIVE DOCS [feature-name]"** → Move completed docs to archive
 
-### Enhanced Status Commands (v1.1.004-rc)
+### Status Commands (v1.0.004)
 - **"SITREP PROJECT"** → Comprehensive project status with structure
 - **"SITREP FEATURE [name]"** → Feature-specific detailed status
 - **"SITREP BRANCHES"** → Branch status across project
 
-### Structure Validation Commands (v1.1.004-rc)
+### Structure Validation Commands (v1.0.004)
 - **"CHECK STRUCTURE"** → Validate project structure compliance
 - **"CHECK GATES"** → Validate quality gate status
 - **"CHECK BRANCHES"** → Validate branch health and compliance
@@ -235,32 +252,32 @@ Proceeding with security analysis...
 - **SEV-3+**: AUTO GO acceptable, optional human review
 
 ### By Phase
-- **GO RCC**: COLLAB mode recommended
-- **GO PLAN**: HUM LEAD for MAJOR, COLLAB for others
-- **GO CODE**: AI LEAD acceptable for most tasks
-- **GO FINAL**: REV REQ for quality validation
-- **GO VAL**: AI LEAD for verification tasks
+- **RCC**: COLLAB mode recommended
+- **PLAN**: HUM LEAD for MAJOR, COLLAB for others
+- **CODE**: AI LEAD acceptable for most tasks
+- **FINAL**: REV REQ for quality validation
+- **VAL**: AI LEAD for verification tasks
 
 ## Process Flow Implementation
 
 ### Standard BRTOPS Flow
 ```
-Feature Request → GO RCC → GO PLAN → GO CODE → GO FINAL → GO VAL → DEBRIEF
+Feature Request → RCC → PLAN → CODE → FINAL → VAL → DEBRIEF
 ```
 
 ### With Collaboration
 ```
 User: "MAJOR SEV-1 Feature X"
-AI: "GO RCC for MAJOR SEV-1 feature"
+AI: "RCC for MAJOR SEV-1 feature"
 User: "GOFLIGHT" 
-AI: [Execute RCC] → "Ready for GO PLAN"
+AI: [Execute RCC] → "Ready for PLAN"
 User: "HUM LEAD planning"
 AI: "🤝 Human-led planning mode activated"
 ```
 
 ### With Quality Gates
 ```
-GO CODE → [Development] → RUN GATES → [Gates pass/fail] → GO FINAL
+CODE → [Development] → GATECHECK → [Gates pass/fail] → FINAL
 ```
 
 ## Error Handling
@@ -333,7 +350,7 @@ GO CODE → [Development] → RUN GATES → [Gates pass/fail] → GO FINAL
 
 ---
 
-**BRTOPS Version**: 1.1.004-rc  
-**Last Updated**: 2025-08-22  
+**BRTOPS Version**: 1.0.004  
+**Last Updated**: 2025-08-26  
 **Compatibility**: Claude Code and Claude Web  
-**Status**: Release Candidate - Automated Protocol Violation Prevention System
+**Status**: Production Release - Command Normalization & Enhanced Operations
