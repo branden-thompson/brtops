@@ -96,35 +96,63 @@
 ## Alert System
 
 ### ALERT-1 (Crisis Mode)
-**Purpose**: Emergency procedures - halt all non-essential work, focus exclusively on critical problem  
-**Usage**: `ALERT-1 [critical issue description]`  
+**Purpose**: GLOBAL emergency state - halt all non-essential work across ALL contexts  
+**Usage**: `ALERT-1` (without issue description - represents global state)  
+**Scope**: **UNIVERSAL** - Applies to entire project, all contexts, all conversations until STANDDOWN
 **Protocol**:
-- ❌ HALT all non-essential work immediately
-- 🎯 FOCUS exclusively on identified critical problem  
+- ❌ HALT all non-essential work immediately across ALL contexts
+- 🎯 FOCUS exclusively on crisis resolution  
 - 🔧 ENHANCED DEBUG, DOCUMENT, SITREP capabilities active
 - 📊 MANDATORY SITREP after each major state change
 - 🖥️ PERSISTENT VIEW in terminal (when supported)
-**Authority**: Any user
+- 🌍 STATUS PERSISTENCE across all conversations/sessions until STANDDOWN
+**Authority**: HUM LEAD
 
 ### ALERT-2 (Serious Non-Emergency)
-**Purpose**: Significant issue requiring focus shift - pause non-essential work at stable checkpoint  
-**Usage**: `ALERT-2 [serious issue description]`  
+**Purpose**: GLOBAL serious issue state - controlled pause and refocus across ALL contexts  
+**Usage**: `ALERT-2` (without issue description - represents global state)  
+**Scope**: **UNIVERSAL** - Applies to entire project, all contexts, all conversations until STANDDOWN
 **Protocol**:
-- 🛑 PAUSE non-essential work at next stable checkpoint
+- 🛑 PAUSE non-essential work at stable checkpoint across ALL contexts
 - 📝 DOCUMENT current state before refocusing
 - 🔧 ENHANCED DEBUG, DOCUMENT, SITREP protocols active
 - 🎯 REFOCUS on identified problem with full attention
-**Authority**: Any user
+- 🌍 STATUS PERSISTENCE across all conversations/sessions until STANDDOWN
+**Authority**: HUM LEAD
 
 ### ALERT-3 (Minor/Medium Severity)
-**Purpose**: Issue noted but not requiring immediate action - continue to stable state  
-**Usage**: `ALERT-3 [issue description]`  
+**Purpose**: GLOBAL tracking state - note issue across ALL contexts for awareness  
+**Usage**: `ALERT-3` (without issue description - represents global state)  
+**Scope**: **UNIVERSAL** - Issue awareness across entire project, all contexts until STANDDOWN
 **Protocol**:
 - 📝 NOTE issue for future addressing
 - ✅ CONTINUE current work to stable state
 - 📚 DOCUMENT all context before potential auto-compacting
 - 🕒 QUEUE for next appropriate work cycle
-**Authority**: Any user
+- 🌍 UNIVERSAL AWARENESS across all conversations/sessions until STANDDOWN
+**Authority**: HUM LEAD
+
+### STANDDOWN [ALERT-LEVEL]
+**Purpose**: Clear global alert status and return to normal operations  
+**Usage**: `STANDDOWN ALERT-1`, `STANDDOWN ALERT-2`, `STANDDOWN ALERT-3`  
+**Scope**: **UNIVERSAL** - Terminates alert status across ALL contexts globally
+**Protocol**:
+- ✅ TERMINATE specified alert status globally
+- 🔄 RESTORE all contexts to pre-alert operational state  
+- 📊 CONFIRM normal operations resumption
+- 🌍 CLEAR STATUS across all conversations/sessions
+**Authority**: HUM LEAD only
+
+**Example Usage**:
+```
+HUM LEAD: "ALERT-1"
+AI: "🚨 CRISIS MODE ACTIVATED GLOBALLY - Status applies to ALL contexts until STANDDOWN"
+
+[...time passes, crisis work continues...]
+
+HUM LEAD: "STANDDOWN ALERT-1"  
+AI: "✅ CRISIS MODE CLEARED - All contexts restored to normal operations"
+```
 
 ## Enhanced Analysis Commands
 
@@ -529,11 +557,25 @@ RCC → GO PLAN → START CODE → FINAL → GO VAL → DEBRIEF
 ABORT → ASSESS → ROLLBACK → RESUME or RESET
 ```
 
-### Alert System Flow
+### Alert System Flow (Global State Management)
 ```
-Critical Issue → ALERT-1 → ASSESS Scope → MAP System Dependencies → PROD DEBUG → SITREP
-Serious Issue → ALERT-2 → ASSESS Impact → Enhanced protocols → SITREP  
-Minor Issue → ALERT-3 → DOCUMENT → QUEUE → Continue normal flow
+Crisis Detected → ALERT-1 → [Enhanced protocols active globally] → STANDDOWN ALERT-1
+Serious Issue → ALERT-2 → [Priority refocus active globally] → STANDDOWN ALERT-2  
+Minor Issue → ALERT-3 → [Issue tracking active globally] → STANDDOWN ALERT-3
+```
+
+### Alert System Workflow Example
+```
+# Global crisis state activation
+HUM LEAD: "ALERT-1"
+AI: [🚨 CRISIS MODE ACTIVATED GLOBALLY - applies to ALL contexts]
+
+# Crisis work continues under enhanced protocols
+AI: [All actions under ALERT-1 protocols until STANDDOWN]
+
+# Crisis resolved - global state cleared
+HUM LEAD: "STANDDOWN ALERT-1"
+AI: [✅ CRISIS MODE CLEARED - all contexts restored to normal]
 ```
 
 ## Command Combinations
@@ -593,13 +635,26 @@ AI: "🔧 DEBUG initiated: staging environment, infinite retry loops
     Staging protocols active: deployment validation, integration testing"
 ```
 
-### Alert System Example
+### Alert System Example (Global State)
 ```
-User: "ALERT-1 Production system down"
-AI: "🚨 CRISIS MODE ACTIVATED - halting all non-essential work"
-AI: "📊 SITREP: System status, focusing exclusively on production issue"
-User: "PROD DEBUG production deployment failure"
-AI: [Production-focused debugging with enhanced protocols]
+HUM LEAD: "ALERT-1"
+AI: "🚨 CRISIS MODE ACTIVATED GLOBALLY
+    - All non-essential operations halted across ALL contexts
+    - Enhanced debugging protocols in effect
+    - Status applies to ALL contexts until STANDDOWN"
+
+HUM LEAD: "Production API completely down"  
+AI: "🎯 Crisis identified: Production API failure
+    - Focusing exclusively on production API restoration
+    - Enhanced protocols active across all contexts"
+
+[...work continues under ALERT-1 protocols...]
+
+HUM LEAD: "STANDDOWN ALERT-1"
+AI: "✅ CRISIS MODE CLEARED
+    - Alert-1 status terminated globally
+    - All contexts restored to normal operations
+    - Ready for standard work resumption"
 ```
 
 ### Collaboration Example

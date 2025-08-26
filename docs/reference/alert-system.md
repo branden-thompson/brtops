@@ -2,67 +2,94 @@
 
 ## Overview
 
-The BRTOPS Alert System provides structured emergency response protocols for development operations. It implements three escalation levels to manage issues based on severity and required response urgency.
+The BRTOPS Alert System provides structured emergency response protocols for development operations. **ALERT represents the global state of work and project** - like a fire alarm that applies to the entire building, not just one room. 
+
+**Key Principle**: ALERT status automatically applies to **ALL CONTEXTS** until explicitly cleared by HUM LEAD using STANDDOWN command. This ensures complete alignment between HUM LEAD and Agent(s) on immediate activity priorities.
 
 ## Alert Levels
 
 ### ALERT-1: Crisis Mode 🚨
-**Classification**: Emergency procedures required
+**Classification**: Emergency procedures required  
+**Scope**: **GLOBAL** - Applies to all contexts, all work, entire project
 **Trigger**: Production down, critical security breach, data loss, system corruption
 
 **Protocol**:
-- ❌ **IMMEDIATE HALT**: All non-essential work stops immediately
-- 🎯 **EXCLUSIVE FOCUS**: All resources dedicated to critical problem resolution
+- ❌ **IMMEDIATE HALT**: All non-essential work stops immediately across ALL contexts
+- 🎯 **EXCLUSIVE FOCUS**: All resources dedicated to crisis resolution
 - 🔧 **ENHANCED CAPABILITIES**: DEBUG, DOCUMENT, SITREP protocols active
 - 📊 **MANDATORY REPORTING**: SITREP required after each major state change
 - 🖥️ **PERSISTENT VIEW**: Terminal integration shows active alert status
 - ⏰ **TIME-BOXED**: Regular checkpoints to assess progress and escalation
+- 🌍 **UNIVERSAL APPLICATION**: Status persists across all conversations/sessions until STANDDOWN
 
 **Usage Examples**:
 ```
-ALERT-1 Production API completely down - all users affected
-ALERT-1 Critical security vulnerability being actively exploited
-ALERT-1 Database corruption detected - data integrity at risk
+HUM LEAD: "ALERT-1"
+AI: "🚨 CRISIS MODE ACTIVATED GLOBALLY
+    - All non-essential operations halted immediately
+    - Enhanced debugging protocols in effect  
+    - Awaiting crisis details or immediate instructions
+    - Status applies to ALL contexts until STANDDOWN"
+
+HUM LEAD: "Production API completely down"
+AI: "🎯 Crisis identified: Production API failure
+    - Focusing exclusively on production API restoration
+    - Enhanced debugging protocols active
+    - Next SITREP after initial assessment"
 ```
 
-**Expected AI Response**:
+**STANDDOWN Protocol**:
 ```
-🚨 CRISIS MODE ACTIVATED
-- Halting all non-essential operations immediately
-- Focusing exclusively on: [issue description]
-- Enhanced debugging protocols in effect
-- Next SITREP scheduled after: [next major action]
+HUM LEAD: "STANDDOWN ALERT-1"
+AI: "✅ CRISIS MODE CLEARED
+    - Alert-1 status terminated globally
+    - Returning to normal operations
+    - All contexts restored to pre-crisis state
+    - Ready for standard work resumption"
 ```
 
 ### ALERT-2: Serious Non-Emergency 🟡
-**Classification**: Significant issue requiring focus shift
+**Classification**: Significant issue requiring focus shift  
+**Scope**: **GLOBAL** - Applies to all contexts, all work, entire project
 **Trigger**: Major feature broken, performance degradation, deployment issues
 
 **Protocol**:
-- 🛑 **CONTROLLED PAUSE**: Complete current task to stable checkpoint before shifting focus
+- 🛑 **CONTROLLED PAUSE**: Complete current task to stable checkpoint across ALL contexts
 - 📝 **STATE DOCUMENTATION**: Document current work state comprehensively
 - 🔧 **ENHANCED PROTOCOLS**: DEBUG, DOCUMENT, SITREP capabilities activated
 - 🎯 **PRIORITY REFOCUS**: Redirect full attention to identified problem
 - 📊 **REGULAR REPORTING**: SITREP updates at reasonable intervals
+- 🌍 **UNIVERSAL APPLICATION**: Status persists across all conversations/sessions until STANDDOWN
 
 **Usage Examples**:
 ```
-ALERT-2 User authentication failing for 30% of login attempts
-ALERT-2 Core feature completely broken in production deployment
-ALERT-2 Performance regression causing significant user impact
+HUM LEAD: "ALERT-2"
+AI: "🟡 SERIOUS ALERT ACTIVATED GLOBALLY
+    - Completing current tasks to stable checkpoint
+    - Enhanced protocols activating
+    - Awaiting issue details for priority refocus
+    - Status applies to ALL contexts until STANDDOWN"
+
+HUM LEAD: "User authentication failing for 30% of users"
+AI: "🎯 Serious issue identified: Authentication system degradation
+    - Documenting current work state
+    - Redirecting full attention to auth system
+    - Enhanced debugging protocols active"
 ```
 
-**Expected AI Response**:
+**STANDDOWN Protocol**:
 ```
-🟡 SERIOUS ISSUE ACKNOWLEDGED
-- Completing current task to stable checkpoint
-- Documenting work state before refocus
-- Enhanced protocols activated for: [issue description]
-- Full attention redirected to issue resolution
+HUM LEAD: "STANDDOWN ALERT-2"
+AI: "✅ SERIOUS ALERT CLEARED
+    - Alert-2 status terminated globally
+    - Returning to normal operations
+    - All contexts restored to standard priority
+    - Ready for regular work resumption"
 ```
 
 ### ALERT-3: Minor/Medium Severity 🟢
-**Classification**: Issue noted for tracking but not immediate action required
+**Classification**: Issue noted for tracking but not immediate action required  
+**Scope**: **GLOBAL** - Applies to all contexts for awareness and tracking
 **Trigger**: Non-critical bugs, minor performance issues, documentation gaps
 
 **Protocol**:
@@ -70,21 +97,32 @@ ALERT-2 Performance regression causing significant user impact
 - ✅ **CONTINUE WORK**: Complete current tasks to natural stopping point
 - 📚 **CONTEXT PRESERVATION**: Document all relevant context before potential context loss
 - 🕒 **QUEUE MANAGEMENT**: Add to appropriate work queue for next cycle
+- 🌍 **UNIVERSAL AWARENESS**: Status noted across all conversations/sessions until STANDDOWN
 
 **Usage Examples**:
 ```
-ALERT-3 Minor UI alignment issue on mobile devices
-ALERT-3 Documentation outdated for recently updated feature
-ALERT-3 Console warnings appearing but not affecting functionality
+HUM LEAD: "ALERT-3"
+AI: "🟢 MINOR ALERT ACTIVATED GLOBALLY
+    - Issue will be noted and tracked
+    - Continuing current work to completion
+    - Context preservation active
+    - Status applies to ALL contexts until STANDDOWN"
+
+HUM LEAD: "Minor UI alignment issue on mobile devices"
+AI: "📝 Minor issue noted: Mobile UI alignment
+    - Issue recorded for future addressing
+    - Continuing current work to natural stopping point
+    - Queued for next appropriate work cycle"
 ```
 
-**Expected AI Response**:
+**STANDDOWN Protocol**:
 ```
-🟢 ISSUE NOTED FOR FUTURE ATTENTION
-- Recorded: [issue description]
-- Continuing current work to completion
-- Context preserved for future resolution
-- Queued for next appropriate work cycle
+HUM LEAD: "STANDDOWN ALERT-3"
+AI: "✅ MINOR ALERT CLEARED
+    - Alert-3 status terminated globally
+    - Issue tracking complete
+    - All contexts returned to normal operations
+    - Standard work priority restored"
 ```
 
 ## Alert System Integration
