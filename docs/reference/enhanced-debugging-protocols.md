@@ -7,7 +7,10 @@ These enhanced debugging protocols incorporate critical lessons learned from rea
 
 ## Core Enhanced Commands
 
-### ASSESS SCOPE [ISSUE]
+### ASSESS [SUBJECT]
+**Purpose**: Comprehensive analysis and assessment operations for informed decision making
+
+#### ASSESS Scope
 **Purpose**: Force explicit scoping before major debugging efforts to prevent scope creep
 
 **Protocol**:
@@ -18,7 +21,7 @@ These enhanced debugging protocols incorporate critical lessons learned from rea
 
 **Example Usage**:
 ```
-User: "ASSESS SCOPE infinite retry loops in production"
+User: "ASSESS Scope"
 AI: "🔍 SCOPING ANALYSIS INITIATED
 Current Working Functionality: 95% (only card content sync affected)
 Maximum Acceptable Loss: 10% (preserve core user features)
@@ -26,12 +29,53 @@ Time Investment Limit: 4 hours before reassessment
 Rollback Criteria: If core functionality drops below 85%"
 ```
 
+#### ASSESS Impact
+**Purpose**: Analyze and project probable changes, improvements, or degradations
+
+**Protocol**:
+1. **Evaluate Positive Outcomes**: Expected improvements and benefits
+2. **Identify Negative Side Effects**: Potential regressions and issues
+3. **Risk/Benefit Analysis**: Compare potential gains vs. risks
+4. **Timeline and Resource Impact**: Project effort and duration
+
+**Example Usage**:
+```
+User: "ASSESS Impact"
+AI: "📊 IMPACT ANALYSIS INITIATED
+Positive Outcomes: Improved user experience, reduced sync errors
+Potential Risks: Performance degradation, increased complexity
+Risk/Benefit Ratio: Medium risk, high benefit
+Timeline Impact: 2-3 days development, 1 day testing"
+```
+
+#### ASSESS Regression
+**Purpose**: Conduct thorough regression analysis for proposed changes
+
+**Protocol**:
+1. **Identify Affected Components**: Map all systems touched by changes
+2. **Backward Compatibility**: Evaluate impact on existing functionality
+3. **Critical User Workflows**: Test essential user interaction paths
+4. **Rollback Requirements**: Document restoration procedures
+
+**Example Usage**:
+```
+User: "ASSESS Regression"
+AI: "🔄 REGRESSION ANALYSIS INITIATED
+Affected Components: Session management, user authentication, theme system
+Backward Compatibility: No breaking changes identified
+Critical Workflows: Login, theme selection, card creation - all tested
+Rollback Plan: Database migration reversal + code rollback available"
+```
+
 **Critical Questions Asked**:
 - What is the business impact of the bug vs. the proposed fix?
 - Can we isolate the problem without affecting unrelated systems?
 - What percentage of user interactions are actually affected?
 
-### MAP DEPS [SYSTEM]
+### MAP [SUBJECT | SYSTEM]
+**Purpose**: Documentation and diagramming operations for system understanding before changes
+
+#### MAP System Dependencies
 **Purpose**: Document system dependencies before implementing changes to prevent cascade failures
 
 **Output Format**:
@@ -50,7 +94,8 @@ DEPENDENCY MAP: [System Name]
 
 **Real Example from AAR**:
 ```
-DEPENDENCY MAP: Session System
+User: "MAP System Dependencies session system"
+AI: "DEPENDENCY MAP: Session System
 ├── Core Dependencies
 │   ├── GlobalSessionProvider: UI components lose session context
 │   ├── useGuestUsers Hook: User management completely broken
@@ -62,7 +107,75 @@ DEPENDENCY MAP: Session System
 └── External Dependencies  
     ├── React Query: Retry behavior affects API call patterns
     ├── Browser APIs: sessionStorage affects user persistence
-    └── SSE Connection: Real-time updates become polling-based
+    └── SSE Connection: Real-time updates become polling-based"
+```
+
+#### MAP Data-Flow
+**Purpose**: Diagram and document data flow before making changes to understand transformation chains
+
+**Output Format**:
+```
+DATA FLOW MAP: [Component Name]
+Input Sources: [list with data types and origins]
+├── Processing Steps: [transformation sequence with functions]
+├── Output Destinations: [list with consumers and formats]
+└── Side Effects: [database writes, API calls, state changes]
+```
+
+**Example Usage**:
+```
+User: "MAP Data-Flow user authentication"
+AI: "DATA FLOW MAP: User Authentication
+Input Sources: 
+├── Login form: {username, password}
+├── OAuth provider: {token, user_profile}
+Processing Steps:
+├── validateCredentials() → boolean
+├── generateSession() → {sessionId, expires}  
+├── updateUserContext() → {user, permissions}
+Output Destinations:
+├── Session storage: encrypted session data
+├── User context: current user state
+├── Analytics: login event tracking
+Side Effects:
+├── Database: user.last_login timestamp
+├── API: POST /auth/session
+└── Browser: authentication cookies set"
+```
+
+#### MAP Event-Flow  
+**Purpose**: Diagram and document event flow before making changes to understand event chains
+
+**Output Format**:
+```
+EVENT FLOW MAP: [System Name]
+Trigger Events: [list of initiating events]
+├── Event Sequence: [ordered event processing chain]
+├── Event Handlers: [components responding to events]
+└── Side Effects: [secondary events, state changes, API calls]
+```
+
+**Example Usage**:
+```
+User: "MAP Event-Flow card creation"
+AI: "EVENT FLOW MAP: Card Creation
+Trigger Events:
+├── User clicks 'Add Card' button
+├── Form submission event fired
+Event Sequence:
+├── 1. validateCardData() → validation event
+├── 2. createCard() → card creation event
+├── 3. updateUI() → UI refresh event  
+├── 4. syncToServer() → server sync event
+Event Handlers:
+├── CardForm: handles validation results
+├── CardList: handles new card display
+├── SessionTracker: handles user activity
+└── SSEConnection: handles real-time sync
+Side Effects:
+├── Database: INSERT new card record
+├── SSE broadcast: notify other clients
+└── Analytics: card_created event logged"
 ```
 
 ### PROD DEBUG [ISSUE]

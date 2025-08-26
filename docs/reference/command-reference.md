@@ -120,11 +120,14 @@
 - 🕒 QUEUE for next appropriate work cycle
 **Authority**: Any user
 
-## Enhanced Debugging Commands
+## Enhanced Analysis Commands
 
-### ASSESS SCOPE [ISSUE]
-**Purpose**: Force explicit scoping before major debugging efforts  
-**Usage**: `ASSESS SCOPE [detailed issue description]`  
+### ASSESS [SUBJECT]
+**Purpose**: Comprehensive analysis and assessment operations
+
+#### ASSESS Scope
+**Usage**: `ASSESS Scope`  
+**Purpose**: Assess current scope of debugging or implementation task
 **Protocol**:
 1. Define current working functionality percentage
 2. Define maximum acceptable functionality loss
@@ -132,15 +135,64 @@
 4. Establish rollback criteria upfront
 **Authority**: Any user
 
-### MAP DEPS [SYSTEM]
-**Purpose**: Document system dependencies before implementing changes  
-**Usage**: `MAP DEPS [system name]`  
+#### ASSESS Impact  
+**Usage**: `ASSESS Impact`
+**Purpose**: Analyze and project probable changes, improvements, or degradations
+**Protocol**:
+1. Evaluate positive outcomes and improvements
+2. Identify potential negative side effects
+3. Assess risk/benefit ratio
+4. Project timeline and resource impact
+**Authority**: Any user
+
+#### ASSESS Regression
+**Usage**: `ASSESS Regression`  
+**Purpose**: Conduct thorough regression analysis for changes
+**Protocol**:
+1. Identify affected system components
+2. Evaluate backward compatibility impacts
+3. Test critical user workflows
+4. Document rollback requirements
+**Authority**: Any user
+
+### MAP [SUBJECT | SYSTEM]
+**Purpose**: Documentation and diagramming operations for system understanding
+
+#### MAP System Dependencies
+**Usage**: `MAP System Dependencies [system name]`
+**Purpose**: Document system dependencies before implementing changes
 **Output**:
 ```
 DEPENDENCY MAP: [System Name]
 Core Dependencies (break system): [list]
 Optional Dependencies (degrade gracefully): [list]  
 External Dependencies (may cause issues): [list]
+```
+**Authority**: Any user
+
+#### MAP Data-Flow
+**Usage**: `MAP Data-Flow [component/feature]`
+**Purpose**: Diagram and document data flow before making changes
+**Output**:
+```
+DATA FLOW MAP: [Component Name]
+Input Sources: [list with data types]
+Processing Steps: [transformation sequence]
+Output Destinations: [list with consumers]
+Side Effects: [database writes, API calls, etc.]
+```
+**Authority**: Any user
+
+#### MAP Event-Flow  
+**Usage**: `MAP Event-Flow [system/feature]`
+**Purpose**: Diagram and document event flow before making changes
+**Output**:
+```
+EVENT FLOW MAP: [System Name]
+Trigger Events: [list of initiating events]
+Event Sequence: [ordered event processing]
+Event Handlers: [components responding to events]
+Side Effects: [secondary events, state changes]
 ```
 **Authority**: Any user
 
@@ -317,8 +369,8 @@ ABORT → ASSESS → ROLLBACK → RESUME or RESET
 
 ### Alert System Flow
 ```
-Critical Issue → ALERT-1 → ASSESS SCOPE → MAP DEPS → PROD DEBUG → SITREP
-Serious Issue → ALERT-2 → ASSESS SCOPE → Enhanced protocols → SITREP  
+Critical Issue → ALERT-1 → ASSESS Scope → MAP System Dependencies → PROD DEBUG → SITREP
+Serious Issue → ALERT-2 → ASSESS Impact → Enhanced protocols → SITREP  
 Minor Issue → ALERT-3 → DOCUMENT → QUEUE → Continue normal flow
 ```
 
@@ -334,14 +386,16 @@ User: "SITREP"
 AI: [Shows current status]
 ```
 
-### Enhanced GO Command Pattern
+### Enhanced Analysis Pattern
 ```
 User: "GO for DEBUG START infinite retry loops"
 AI: "🔧 DEBUG START initiated for infinite retry loops"
-User: "ASSESS SCOPE"
-AI: [Scoping analysis with functionality impact assessment]
-User: "MAP DEPS session system"
-AI: [Dependency mapping for session architecture]
+User: "ASSESS Scope"
+AI: [Current functionality: 95%, Max loss: 10%, Time limit: 4h, Rollback criteria defined]
+User: "MAP System Dependencies session system"
+AI: [Core: GlobalSessionProvider, Optional: ActiveStackers, External: React Query]
+User: "ASSESS Impact"
+AI: [Risk/benefit analysis with timeline projections]
 ```
 
 ### Alert System Example
