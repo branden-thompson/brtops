@@ -318,41 +318,148 @@ AI: "🔧 DEBUG initiated: staging environment, infinite retry loops"
 
 ## Quality Gate Commands
 
-### RUN GATES
-**Purpose**: Execute all required quality gates  
-**Usage**: `RUN GATES`  
+### GATECHECK
+**Purpose**: Run, assess, and report on all required quality gates  
+**Usage**: `GATECHECK` or `GATECHK`  
+**Process**:
+1. **RUN**: Execute all SEV-level appropriate quality gates
+2. **ASSESS**: Compile results and analyze pass/fail status  
+3. **REPORT**: Present findings with 1-3 actionable recommendations
 **Context**: Auto-determined by SEV level  
-**Authority**: Any user  
+**Authority**: Any user
 
-### GATE STATUS
-**Purpose**: Check current gate status  
-**Usage**: `GATE STATUS`  
-**Output**: Shows pass/fail for all gates  
-**Authority**: Any user  
+**Example Output**:
+```
+🛡️ GATECHECK COMPLETE
+✅ Test Coverage: 87% (Target: 85%) - PASS
+❌ Security Scan: 2 medium vulnerabilities found - FAIL  
+✅ Performance: All benchmarks within acceptable range - PASS
+✅ Code Review: Approved with minor suggestions - PASS
+
+📊 RECOMMENDATIONS:
+1. Address SQL injection vulnerability in user input validation
+2. Update dependency with known security patch  
+3. Consider caching optimization for repeated API calls
+
+🎯 GATE STATUS: 3/4 PASS - Address security issues before deployment
+```
+
+### OPSSEC (Operational Security Check)
+**Purpose**: Scan, assess, and report on security vulnerabilities  
+**Usage**: `OPSSEC`  
+**Process**:
+1. **SCAN**: Execute comprehensive security vulnerability scan
+2. **ASSESS**: Analyze findings by severity and exploitability
+3. **REPORT**: Present prioritized vulnerabilities with remediation steps  
+**Trigger**: Before deployment, on security alerts  
+**Authority**: Any user
+
+**Example Output**:
+```
+🔒 OPSSEC SCAN COMPLETE
+🚨 CRITICAL: 1 vulnerability found
+⚠️  HIGH: 2 vulnerabilities found  
+📋 MEDIUM: 3 vulnerabilities found
+ℹ️  LOW: 5 vulnerabilities found
+
+📊 RECOMMENDATIONS:
+1. IMMEDIATE: Update Express.js to patch RCE vulnerability (CVE-2024-XXXX)
+2. THIS WEEK: Implement input sanitization for user-generated content  
+3. NEXT SPRINT: Enable security headers (HSTS, CSP, X-Frame-Options)
+
+🎯 SECURITY STATUS: CRITICAL issues must be resolved before production deployment
+```
+
+### PR (Peer Review)
+**Purpose**: Human code review coordination and tracking  
+**Usage**: `PR`  
+**Process**:
+1. **RUN**: Create or update pull request for review
+2. **ASSESS**: Track review status and incorporate feedback
+3. **REPORT**: Summarize review outcomes and required changes
+**Context**: Uses standard GitHub nomenclature and workflows  
+**Authority**: Human reviewer + AI coordination
+
+**Example Output**:
+```
+📝 PR STATUS REPORT  
+🔗 Pull Request: #247 "Add user authentication system"
+👥 Reviewers: @tech-lead (approved), @security-expert (requested changes)
+
+📊 REVIEW SUMMARY:
+✅ Code quality: Clean implementation, good test coverage
+⚠️  Security: Address password hashing concern  
+✅ Performance: No performance impact detected
+
+📋 RECOMMENDATIONS:
+1. Switch from MD5 to bcrypt for password hashing (security-expert)
+2. Add input validation tests (tech-lead suggestion)  
+3. Update documentation for new auth endpoints
+
+🎯 PR STATUS: 1 approval, 1 change request - Address security concern to merge
+```
+
+### PERFCHK (Performance Check)
+**Purpose**: Run, assess, and report on performance status and benchmarks  
+**Usage**: `PERFCHK` or `PERFSTAT`  
+**Process**:
+1. **RUN**: Execute performance tests and collect metrics
+2. **ASSESS**: Compare against benchmarks and identify bottlenecks  
+3. **REPORT**: Present performance status with optimization recommendations
+**Context**: Includes load testing, memory usage, response times  
+**Authority**: Any user
+
+**Example Output**:
+```
+⚡ PERFCHK COMPLETE
+📈 API Response Times: 245ms avg (Target: <300ms) - PASS
+💾 Memory Usage: 512MB (Target: <1GB) - PASS  
+🔄 Database Queries: 15ms avg - PASS
+❌ Page Load Time: 4.2s (Target: <3s) - FAIL
+
+📊 PERFORMANCE METRICS:
+- CPU Usage: 45% avg, 78% peak  
+- Network I/O: 2.3MB/s avg
+- Cache Hit Rate: 87%
+
+📋 RECOMMENDATIONS:
+1. Optimize image compression (reduce page load by ~1.5s)
+2. Implement lazy loading for below-fold content
+3. Consider CDN for static assets in production
+
+🎯 PERFORMANCE STATUS: 3/4 benchmarks met - Address page load optimization
+```
 
 ### COV CHECK (Coverage Check)
-**Purpose**: Test coverage validation  
-**Usage**: `COV CHECK`  
-**Trigger**: Before GO FINAL  
-**Authority**: Automated  
+**Purpose**: Run, assess, and report on test coverage status
+**Usage**: `COV CHECK`
+**Process**:
+1. **RUN**: Execute test coverage analysis across codebase
+2. **ASSESS**: Compare against coverage targets and identify gaps
+3. **REPORT**: Present coverage metrics with improvement recommendations
+**Context**: Integrated with GATECHECK but available as standalone command
+**Authority**: Any user
 
-### SEC SCAN (Security Scan)
-**Purpose**: Security vulnerability scan  
-**Usage**: `SEC SCAN`  
-**Trigger**: Before deployment  
-**Authority**: Automated  
+**Example Output**:
+```
+📊 COV CHECK COMPLETE
+✅ Overall Coverage: 87% (Target: 85%) - PASS
+✅ Function Coverage: 92% - PASS
+⚠️  Branch Coverage: 78% (Target: 80%) - WARN
+❌ Line Coverage: 83% (Target: 90%) - FAIL
 
-### PEER REV (Peer Review)
-**Purpose**: Human code review  
-**Usage**: `PEER REV`  
-**Trigger**: All implementations  
-**Authority**: Human reviewer  
+📋 UNCOVERED AREAS:
+- src/auth/password-reset.js: 45% coverage
+- src/utils/data-validation.js: 62% coverage  
+- src/api/error-handling.js: 71% coverage
 
-### PERF TEST (Performance Test)
-**Purpose**: Performance validation  
-**Usage**: `PERF TEST`  
-**Trigger**: Resource-heavy features  
-**Authority**: Automated  
+📊 RECOMMENDATIONS:
+1. Add test cases for password reset edge cases (email failures, expired tokens)
+2. Implement validation tests for malformed input scenarios
+3. Create error handling tests for network timeout conditions
+
+🎯 COVERAGE STATUS: 2/4 metrics met - Focus on branch and line coverage improvements
+```  
 
 ## Feature Classification
 
@@ -388,7 +495,12 @@ Feature Request → GO RCC → GO PLAN → GO CODE → GO FINAL → GO VAL → D
 
 ### With Quality Gates
 ```
-GO CODE → RUN GATES → GO FINAL → PEER REV → RUN GATES → GO VAL
+GO CODE → GATECHECK → GO FINAL → PR → GATECHECK → GO VAL
+```
+
+### Security & Performance Integration
+```
+Implementation → OPSSEC → PERFCHK → GATECHECK → Deployment
 ```
 
 ### Emergency Flow (Traditional)
@@ -460,6 +572,17 @@ User: "HUM LEAD architecture decisions"
 AI: "🤝 Human-led mode activated"
 User: "AI TAKE implementation tasks"  
 AI: "🤖 Taking control of implementation"
+```
+
+### Quality Gates Example  
+```
+User: "GATECHECK"
+AI: "🛡️ Running all required quality gates for current SEV level..."
+AI: [Comprehensive report with pass/fail status and recommendations]
+User: "OPSSEC"
+AI: "🔒 Security scan complete - 1 CRITICAL vulnerability found"
+User: "PERFCHK"  
+AI: "⚡ Performance check complete - Page load optimization needed"
 ```
 
 ### System Verification Example
