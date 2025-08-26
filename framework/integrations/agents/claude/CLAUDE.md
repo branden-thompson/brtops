@@ -1,5 +1,5 @@
 # BRTOPS Framework Configuration for Claude v1.0.004
-**🛩️ COMMAND NORMALIZATION & ENHANCED OPERATIONS**
+**🛩️  COMMAND NORMALIZATION & ENHANCED OPERATIONS**
 
 ## Core Principles
 
