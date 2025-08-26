@@ -196,19 +196,48 @@ Side Effects: [secondary events, state changes]
 ```
 **Authority**: Any user
 
-### PROD DEBUG [ISSUE]
-**Purpose**: Production-focused debugging protocols with enhanced safeguards  
-**Usage**: `PROD DEBUG [production issue]`  
-**Requirements**:
-- All debugging must occur in production build environment
-- Document development vs. production behavioral differences  
-- Circuit breaker patterns required for any API retry fixes
-**Authority**: Any user
+### DEBUG [ENVIRONMENT] [ISSUE]
+**Purpose**: Comprehensive debugging operations with contextual inference  
+**Usage**: 
+- `DEBUG` - Uses current work context (environment + issue)
+- `DEBUG [environment]` - Specify environment, infer current issue
+- `DEBUG [issue]` - Use current environment, specify issue  
+- `DEBUG [environment] [issue]` - Fully explicit
 
-### GO for DEBUG START [ISSUE]
-**Purpose**: Initiate focused debugging session with specific issue targeting  
-**Usage**: `GO for DEBUG START [issue description]`  
-**Context**: Enhanced GO command pattern for debugging operations  
+**Verb Variants**:
+- `GO for DEBUG [env] [issue]`
+- `GO 4 DEBUG [env] [issue]` 
+- `START DEBUG [env] [issue]`
+
+**Contextual Inference**:
+- **Environment Default**: If current work in 'dev', assume DEBUG in 'dev' unless specified
+- **Issue Default**: If working on specific issue, assume DEBUG for that issue unless specified
+- **Full Context**: Agent infers both environment and issue from current work context
+
+**Environment Options**: `dev`, `staging`, `prod`, `local`, `test`
+
+**Examples**:
+```
+# Context: Working on login bug in development
+User: "DEBUG" 
+AI: "🔧 DEBUG initiated: dev environment, login authentication issue"
+
+# Context: Production deployment issue  
+User: "DEBUG prod"
+AI: "🔧 PROD DEBUG initiated: production environment, deployment failure issue"
+
+# Explicit specification
+User: "GO for DEBUG staging infinite retry loops"
+AI: "🔧 DEBUG initiated: staging environment, infinite retry loops"
+```
+
+**Enhanced Safeguards by Environment**:
+- **prod**: Circuit breaker patterns required, rollback procedures documented
+- **staging**: Deployment validation, user acceptance testing protocols  
+- **dev**: Comprehensive logging, test coverage validation
+- **local**: Performance profiling, memory leak detection
+- **test**: Automated test execution, regression validation
+
 **Authority**: Any user  
 
 ## Collaboration Commands
@@ -388,14 +417,32 @@ AI: [Shows current status]
 
 ### Enhanced Analysis Pattern
 ```
-User: "GO for DEBUG START infinite retry loops"
-AI: "🔧 DEBUG START initiated for infinite retry loops"
+User: "DEBUG infinite retry loops"
+AI: "🔧 DEBUG initiated: dev environment, infinite retry loops"
 User: "ASSESS Scope"
 AI: [Current functionality: 95%, Max loss: 10%, Time limit: 4h, Rollback criteria defined]
 User: "MAP System Dependencies session system"
 AI: [Core: GlobalSessionProvider, Optional: ActiveStackers, External: React Query]
 User: "ASSESS Impact"
 AI: [Risk/benefit analysis with timeline projections]
+```
+
+### Contextual DEBUG Examples
+```
+# Context: Working on login bug in development
+User: "DEBUG"
+AI: "🔧 DEBUG initiated: dev environment, login authentication issue
+    Context auto-detected from current work. Correct? (Y/n)"
+
+# Context: Production deployment failure
+User: "GO 4 DEBUG prod"
+AI: "🔧 PROD DEBUG initiated: production environment, deployment failure issue
+    Enhanced safeguards active: circuit breakers required, rollback documented"
+
+# Explicit environment + issue
+User: "START DEBUG staging infinite retry loops"
+AI: "🔧 DEBUG initiated: staging environment, infinite retry loops
+    Staging protocols active: deployment validation, integration testing"
 ```
 
 ### Alert System Example

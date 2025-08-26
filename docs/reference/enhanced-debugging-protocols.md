@@ -178,27 +178,87 @@ Side Effects:
 └── Analytics: card_created event logged"
 ```
 
-### PROD DEBUG [ISSUE]
-**Purpose**: Production-focused debugging with enhanced safeguards and realistic environment testing
+### DEBUG [ENVIRONMENT] [ISSUE]
+**Purpose**: Comprehensive debugging operations with contextual inference and environment-specific protocols
 
+**Command Structure**:
+- `DEBUG` - Uses current work context (environment + issue)
+- `DEBUG [environment]` - Specify environment, infer current issue
+- `DEBUG [issue]` - Use current environment, specify issue  
+- `DEBUG [environment] [issue]` - Fully explicit
+
+**Verb Variants**: `GO for DEBUG`, `GO 4 DEBUG`, `START DEBUG`
+
+**Contextual Inference Protocol**:
+The agent must actively infer missing parameters from current work context:
+
+1. **Environment Detection**:
+   - If currently working in development → assume `dev` environment
+   - If discussing production issues → assume `prod` environment
+   - If running tests → assume `test` environment
+   - If staging deployment → assume `staging` environment
+
+2. **Issue Detection**:
+   - If actively debugging specific issue → assume that issue
+   - If issue just discovered → assume newly discovered issue
+   - If multiple issues, use most recent or most critical
+
+3. **Context Confirmation**:
+   ```
+   User: "DEBUG"
+   AI: "🔧 DEBUG initiated: [inferred environment] environment, [inferred issue]
+       Context auto-detected from current work. Correct? (Y/n)"
+   ```
+
+**Environment-Specific Protocols**:
+
+#### Production Debug (`prod`)
 **Requirements**:
-1. **Production Environment Testing**: All debugging must occur in production build environment
-2. **Behavioral Difference Documentation**: Document development vs. production differences
-3. **Circuit Breaker Implementation**: Required for any API retry fixes
-4. **Race Condition Assessment**: Evaluate timing-dependent issues in optimized builds
+- Circuit breaker patterns required for all API retry fixes
+- Rollback procedures documented before changes
+- All debugging in production build environment
+- Document development vs. production behavioral differences
 
 **Enhanced Protocol**:
 ```
 PROD DEBUG Checklist:
 □ Build production version of application
 □ Test issue reproduction in production build
-□ Document any development vs. production behavioral differences
+□ Document behavioral differences from development
 □ Implement circuit breaker patterns for retry mechanisms
 □ Validate fix in production environment before deployment
 □ Document rollback procedures for production
 ```
 
-**Key Learning**: Production builds expose different issues than development due to:
+#### Development Debug (`dev`)
+**Requirements**:
+- Comprehensive logging enabled
+- Test coverage validation for affected areas
+- Development server debugging acceptable
+- Hot reloading behavior documented if relevant
+
+#### Staging Debug (`staging`) 
+**Requirements**:
+- Deployment validation protocols
+- User acceptance testing preparation
+- Production-like environment configuration
+- Integration testing for dependent systems
+
+#### Local Debug (`local`)
+**Requirements**:
+- Performance profiling enabled
+- Memory leak detection active
+- Local database state management
+- Development tool integration
+
+#### Test Debug (`test`)
+**Requirements**:
+- Automated test execution for affected areas
+- Regression validation against test suite
+- Test environment isolation
+- CI/CD pipeline impact assessment
+
+**Key Learning from AAR**: Production builds expose different issues than development due to:
 - Optimized bundles changing execution timing
 - SSR/hydration differences becoming apparent  
 - React Query default configurations being more aggressive
