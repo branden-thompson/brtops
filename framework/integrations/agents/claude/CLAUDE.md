@@ -90,6 +90,10 @@ CLEAR ALERT-1        # Clear specific alert (tactical)
 - **"RESUME"** → Continue from pause
 - **"ABORT"** → Emergency stop all operations
 
+### Context Management Commands (v1.1.000)
+- **"DEFRAG"** → Engage context compaction to free up available context capacity
+- **"ORIENT"** → Execute Agent Re-Orienting Protocol and report completion status
+
 ### Protocol Enforcement Commands (v1.1.004-rc)
 - **"PROTOCOL CHECK"** → Verify current protocol compliance status
 - **"PROTOCOL ENFORCE [LEVEL]"** → Activate enhanced enforcement mode (STANDARD, ENHANCED, CRISIS)

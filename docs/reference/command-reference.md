@@ -1,4 +1,4 @@
-# BRTOPS Command Reference v1.0.004
+# BRTOPS Command Reference v1.1.000
 
 ## Core Phase Commands (Normalized)
 
@@ -92,6 +92,24 @@
 **Purpose**: Start over from beginning  
 **Usage**: `RESET`  
 **Authority**: Any user
+
+## Context Management Commands
+
+### DEFRAG
+**Purpose**: Engage context compaction to free up available context capacity  
+**Usage**: `DEFRAG`  
+**Description**: "Defragment and compact context store to optimize memory usage"  
+**Context**: Similar to disk defragmentation - organizes and compacts context storage  
+**Authority**: Any user or automatic trigger at context thresholds  
+**Related**: Used during Context Availability Monitoring protocol
+
+### ORIENT
+**Purpose**: Engage Agent Re-Orienting Protocol and report completion status  
+**Usage**: `ORIENT`  
+**Description**: "Execute complete agent re-orienting sequence with status report"  
+**Context**: Navigation terminology - reestablish bearings and current position  
+**Authority**: Any user or automatic trigger during CODE phase  
+**Related**: Part of enhanced CODE workflow context management system
 
 ## Alert System
 
