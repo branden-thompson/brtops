@@ -94,6 +94,16 @@ CLEAR ALERT-1        # Clear specific alert (tactical)
 - **"DEFRAG"** → Engage context compaction to free up available context capacity
 - **"ORIENT"** → Execute Agent Re-Orienting Protocol and report completion status
 
+### Advanced FINAL Commands (v1.1.000)
+- **"QA STATUS"** → Report quality gate execution status and results
+- **"QUALITY GATES"** → List and status of all quality gates
+- **"PRODUCTION READY"** → Report production readiness assessment
+- **"QA DOCS STATUS"** → Report QA documentation completeness
+- **"EXECUTE GATE [name]"** → Manually execute specific quality gate
+- **"WAIVE GATE [name]"** → Request HUM LEAD waiver for failed quality gate
+- **"RETRY GATE [name]"** → Retry failed quality gate after remediation
+- **"GATE RESULTS [name]"** → Report detailed results for specific quality gate
+
 ### Protocol Enforcement Commands (v1.1.004-rc)
 - **"PROTOCOL CHECK"** → Verify current protocol compliance status
 - **"PROTOCOL ENFORCE [LEVEL]"** → Activate enhanced enforcement mode (STANDARD, ENHANCED, CRISIS)
