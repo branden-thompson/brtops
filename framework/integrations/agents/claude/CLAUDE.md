@@ -20,12 +20,13 @@
 
 ## BRTOPS Command Recognition
 
-### Core Phase Commands (v1.0.004)
+### Core Phase Commands (v1.1.000)
 - **"RCC"** → Requirements & Context Collection (also accepts: GO RCC, INIT RCC, START RCC)
 - **"PLAN"** → Strategic Planning & Architecture (also accepts: GO PLAN, INIT PLAN)
 - **"CODE"** → Development & Implementation (also accepts: GO CODE, INIT CODE)
 - **"FINAL"** → Quality Assurance & Completion (also accepts: GO FINAL)
 - **"VAL"** → Post-deployment Validation (also accepts: GO VAL)
+- **"RELEASE"** → System-Level Deployment & Release Management (also accepts: GO RELEASE, INIT RELEASE)
 - **"DEBRIEF"** → Present findings and retrospective (AAR)
 
 ### Alert System Commands (v1.1.000)
@@ -286,6 +287,11 @@ Proceeding with security analysis...
 Feature Request → RCC → PLAN → CODE → FINAL → VAL → DEBRIEF
 ```
 
+### System-Level BRTOPS Flow
+```
+[All Features Complete] → RELEASE → [System Deployment] → DEBRIEF
+```
+
 ### With Collaboration
 ```
 User: "MAJOR SEV-1 Feature X"
@@ -298,7 +304,7 @@ AI: "🤝 Human-led planning mode activated"
 
 ### With Quality Gates
 ```
-CODE → [Development] → GATECHECK → [Gates pass/fail] → FINAL
+CODE → [Development] → GATECHECK → [Gates pass/fail] → FINAL → VAL → RELEASE
 ```
 
 ## Error Handling
@@ -371,7 +377,7 @@ CODE → [Development] → GATECHECK → [Gates pass/fail] → FINAL
 
 ---
 
-**BRTOPS Version**: 1.0.004  
-**Last Updated**: 2025-08-26  
+**BRTOPS Version**: 1.1.000  
+**Last Updated**: 2025-08-27  
 **Compatibility**: Claude Code and Claude Web  
-**Status**: Production Release - Command Normalization & Enhanced Operations
+**Status**: Production Release - Enhanced Workflows with System-Level Release Management

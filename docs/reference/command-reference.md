@@ -34,7 +34,7 @@
 **Purpose**: Post-deployment validation and verification  
 **Usage**: `VAL`, `GO VAL`, `INIT VAL`, `START VAL`  
 **Description**: "Post-deployment Validation"  
-**Next Phase**: DEBRIEF  
+**Next Phase**: DEBRIEF or RELEASE  
 **Authority**: Any user
 
 **Specialized VAL Commands**:
@@ -42,6 +42,29 @@
 - **"VALIDATE UX"** → Focus on user experience validation (Phase 3)  
 - **"VALIDATE BUSINESS"** → Focus on business value validation (Phase 4)
 - **"VALIDATE SCOPE"** → Focus on scope verification (Phase 6)  
+
+### RELEASE (System-Level Deployment)
+**Purpose**: System-wide deployment orchestration and release management  
+**Usage**: `RELEASE v{version} to {target}`, `INIT RELEASE v{version}`, `GO RELEASE`  
+**Description**: "System-Level Deployment & Release Management"  
+**Next Phase**: System Operations or DEBRIEF  
+**Authority**: HUM LEAD required for deployment decisions
+**Scope**: Entire system/application (aggregates all feature VAL results)
+
+**Release Trigger Patterns**:
+- **"RELEASE v2.1.0 to Production"** → Full production deployment
+- **"RELEASE v1.5.2-hotfix to Staging"** → Hotfix deployment to staging
+- **"This is great, let's cut a v3.0.0 release to GitHub"** → Distribution release
+- **"Time to ship version 2.0.0-beta to UAT"** → Beta release deployment
+
+**Specialized RELEASE Commands**:
+- **"RELEASE STATUS"** → Current release readiness and deployment status
+- **"DEPLOYMENT STATUS"** → Real-time deployment execution monitoring
+- **"RELEASE ROLLBACK"** → Execute emergency rollback procedures  
+- **"RELEASE PAUSE"** → Pause deployment at next safe checkpoint
+- **"RELEASE RESUME"** → Resume paused deployment from checkpoint
+- **"RELEASE ABORT"** → Emergency abort with full rollback
+- **"RELEASE VALIDATE"** → Post-deployment system validation
 
 ### DEBRIEF (Retrospective)
 **Purpose**: Retrospective using AAR (After Action Report)  
@@ -578,9 +601,14 @@ Examples:
 Feature Request → RCC → PLAN → CODE → FINAL → VAL → DEBRIEF
 ```
 
+### System-Level Flow
+```
+[All Features Complete] → RELEASE → [System Deployment] → DEBRIEF
+```
+
 ### With Quality Gates
 ```
-CODE → GATECHECK → FINAL → PR → GATECHECK → VAL
+CODE → GATECHECK → FINAL → PR → GATECHECK → VAL → RELEASE
 ```
 
 ### Security & Performance Integration
