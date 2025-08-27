@@ -28,11 +28,18 @@
 - **"VAL"** → Post-deployment Validation (also accepts: GO VAL)
 - **"DEBRIEF"** → Present findings and retrospective (AAR)
 
-### Alert System Commands (v1.0.004)
+### Alert System Commands (v1.1.000)
 - **"ALERT-1"** → Low-priority project coordination alert
 - **"ALERT-2"** → Medium-priority operational awareness alert
 - **"ALERT-3"** → High-priority critical situation alert
-- **"STANDDOWN"** → Clear all active alerts (also accepts: RESCIND)
+- **"STANDDOWN"** → Clear all active alerts (also accepts: RESCIND, CLEAR)
+
+#### Alert Clearing Examples:
+```
+STANDDOWN ALERT-1    # Clear specific alert (traditional)
+RESCIND ALERT-1      # Clear specific alert (formal)
+CLEAR ALERT-1        # Clear specific alert (tactical)
+```
 
 ### Enhanced Debugging Commands (v1.0.004)
 - **"DEBUG [environment] [issue]"** → Contextual debugging with agent inference
