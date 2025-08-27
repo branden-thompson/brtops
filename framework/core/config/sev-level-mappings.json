@@ -1,0 +1,366 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "BRTOPS SEV Level Mappings v1.1.1",
+  "description": "SEV level to requirement mappings for BRTOPS framework",
+  "type": "object",
+  "properties": {
+    "sevLevels": {
+      "type": "object",
+      "properties": {
+        "SEV-0": {
+          "type": "object",
+          "properties": {
+            "description": "Critical - System-wide impact, security implications, or foundational changes",
+            "authority": "HUM_LEAD",
+            "collaboration": "COLLAB",
+            "approvalRequired": true,
+            "escalationRequired": true,
+            "documentation": {
+              "foldersRequired": ["01-objectives", "02-analysis", "03-architecture-design", "04-development", "05-debugging", "06-key_learnings", "07-readiness"],
+              "requiredFiles": "ALL",
+              "optionalFiles": "80%",
+              "validationLevel": "COMPREHENSIVE"
+            },
+            "qualityGates": {
+              "critical": [
+                "SECURITY_SCAN",
+                "ARCHITECTURE_REVIEW", 
+                "PEER_REVIEW",
+                "INTEGRATION_TESTING",
+                "PERFORMANCE_TESTING",
+                "COMPLIANCE_VALIDATION",
+                "STAKEHOLDER_APPROVAL"
+              ],
+              "standard": [
+                "CODE_COVERAGE",
+                "DOCUMENTATION_COMPLETE",
+                "QUALITY_METRICS",
+                "DEPLOYMENT_READY",
+                "ROLLBACK_TESTED"
+              ],
+              "advisory": [
+                "PERFORMANCE_OPTIMIZATION",
+                "ACCESSIBILITY_TESTING",
+                "USABILITY_TESTING",
+                "MONITORING_SETUP"
+              ]
+            },
+            "workflows": {
+              "phases": ["RCC", "PLAN", "CODE", "FINAL", "VAL", "RELEASE", "DEBRIEF"],
+              "documentAsYouBuild": true,
+              "iterativeApproval": true,
+              "transparencyProtocol": "MAXIMUM"
+            },
+            "contextManagement": {
+              "defragThreshold": 65,
+              "orientThreshold": 80,
+              "checkpointFrequency": 30,
+              "scopeDeviationTolerance": "MINIMAL"
+            },
+            "timeEstimateMultiplier": 2.5,
+            "riskTolerance": "MINIMAL",
+            "rollbackRequired": true
+          }
+        },
+        "SEV-1": {
+          "type": "object", 
+          "properties": {
+            "description": "High - Significant feature impact, user-facing changes, or important integrations",
+            "authority": "COLLAB",
+            "collaboration": "HUM_LEAD_FOR_ARCHITECTURE",
+            "approvalRequired": true,
+            "escalationRequired": false,
+            "documentation": {
+              "foldersRequired": ["01-objectives", "02-analysis", "03-architecture-design", "04-development", "05-debugging", "06-key_learnings", "07-readiness"],
+              "requiredFiles": "ALL",
+              "optionalFiles": "50%",
+              "validationLevel": "STANDARD"
+            },
+            "qualityGates": {
+              "critical": [
+                "SECURITY_SCAN",
+                "PEER_REVIEW",
+                "INTEGRATION_TESTING",
+                "STAKEHOLDER_APPROVAL"
+              ],
+              "standard": [
+                "CODE_COVERAGE", 
+                "DOCUMENTATION_COMPLETE",
+                "QUALITY_METRICS",
+                "DEPLOYMENT_READY"
+              ],
+              "advisory": [
+                "PERFORMANCE_TESTING",
+                "ACCESSIBILITY_TESTING",
+                "MONITORING_SETUP"
+              ]
+            },
+            "workflows": {
+              "phases": ["RCC", "PLAN", "CODE", "FINAL", "VAL", "DEBRIEF"],
+              "documentAsYouBuild": true,
+              "iterativeApproval": true,
+              "transparencyProtocol": "HIGH"
+            },
+            "contextManagement": {
+              "defragThreshold": 70,
+              "orientThreshold": 85,
+              "checkpointFrequency": 45,
+              "scopeDeviationTolerance": "LOW"
+            },
+            "timeEstimateMultiplier": 2.0,
+            "riskTolerance": "LOW",
+            "rollbackRequired": true
+          }
+        },
+        "SEV-2": {
+          "type": "object",
+          "properties": {
+            "description": "Moderate - Standard feature development, moderate complexity, or routine enhancements",
+            "authority": "AI_LEAD",
+            "collaboration": "REV_REQ_FOR_FINAL",
+            "approvalRequired": true,
+            "escalationRequired": false,
+            "documentation": {
+              "foldersRequired": ["01-objectives", "02-analysis", "03-architecture-design", "04-development", "06-key_learnings", "07-readiness"],
+              "requiredFiles": "CORE",
+              "optionalFiles": "AS_NEEDED",
+              "validationLevel": "STANDARD"
+            },
+            "qualityGates": {
+              "critical": [
+                "PEER_REVIEW",
+                "BASIC_TESTING"
+              ],
+              "standard": [
+                "CODE_COVERAGE",
+                "DOCUMENTATION_COMPLETE", 
+                "QUALITY_METRICS"
+              ],
+              "advisory": [
+                "SECURITY_SCAN",
+                "PERFORMANCE_TESTING",
+                "INTEGRATION_TESTING"
+              ]
+            },
+            "workflows": {
+              "phases": ["RCC", "PLAN", "CODE", "FINAL", "VAL"],
+              "documentAsYouBuild": true,
+              "iterativeApproval": false,
+              "transparencyProtocol": "STANDARD"
+            },
+            "contextManagement": {
+              "defragThreshold": 75,
+              "orientThreshold": 85,
+              "checkpointFrequency": 60,
+              "scopeDeviationTolerance": "MODERATE"
+            },
+            "timeEstimateMultiplier": 1.5,
+            "riskTolerance": "MODERATE",
+            "rollbackRequired": false
+          }
+        },
+        "SEV-3": {
+          "type": "object",
+          "properties": {
+            "description": "Low - Minor features, UI improvements, or low-risk changes",
+            "authority": "AI_LEAD", 
+            "collaboration": "AUTO_GO",
+            "approvalRequired": false,
+            "escalationRequired": false,
+            "documentation": {
+              "foldersRequired": ["01-objectives", "02-analysis", "04-development", "06-key_learnings", "07-readiness"],
+              "requiredFiles": "MINIMAL",
+              "optionalFiles": "MINIMAL",
+              "validationLevel": "BASIC"
+            },
+            "qualityGates": {
+              "critical": [
+                "BASIC_TESTING"
+              ],
+              "standard": [
+                "CODE_COVERAGE",
+                "DOCUMENTATION_COMPLETE"
+              ],
+              "advisory": [
+                "PEER_REVIEW",
+                "QUALITY_METRICS"
+              ]
+            },
+            "workflows": {
+              "phases": ["RCC", "CODE", "FINAL"],
+              "documentAsYouBuild": false,
+              "iterativeApproval": false,
+              "transparencyProtocol": "BASIC"
+            },
+            "contextManagement": {
+              "defragThreshold": 75,
+              "orientThreshold": 85,
+              "checkpointFrequency": 90,
+              "scopeDeviationTolerance": "HIGH"
+            },
+            "timeEstimateMultiplier": 1.2,
+            "riskTolerance": "HIGH",
+            "rollbackRequired": false
+          }
+        },
+        "SEV-4": {
+          "type": "object",
+          "properties": {
+            "description": "Minimal - Bug fixes, documentation updates, or cosmetic changes",
+            "authority": "AI_LEAD",
+            "collaboration": "AUTO_GO",
+            "approvalRequired": false,
+            "escalationRequired": false,
+            "documentation": {
+              "foldersRequired": ["01-objectives", "04-development", "06-key_learnings"],
+              "requiredFiles": "MINIMAL",
+              "optionalFiles": "NONE",
+              "validationLevel": "BASIC"
+            },
+            "qualityGates": {
+              "critical": [],
+              "standard": [
+                "BASIC_TESTING"
+              ],
+              "advisory": [
+                "CODE_COVERAGE",
+                "DOCUMENTATION_COMPLETE"
+              ]
+            },
+            "workflows": {
+              "phases": ["RCC", "CODE"],
+              "documentAsYouBuild": false,
+              "iterativeApproval": false,
+              "transparencyProtocol": "MINIMAL"
+            },
+            "contextManagement": {
+              "defragThreshold": 75,
+              "orientThreshold": 85,
+              "checkpointFrequency": 120,
+              "scopeDeviationTolerance": "VERY_HIGH"
+            },
+            "timeEstimateMultiplier": 1.1,
+            "riskTolerance": "VERY_HIGH",
+            "rollbackRequired": false
+          }
+        },
+        "SEV-5": {
+          "type": "object",
+          "properties": {
+            "description": "Trivial - Typos, formatting, or insignificant changes",
+            "authority": "AI_LEAD",
+            "collaboration": "AUTO_GO",
+            "approvalRequired": false,
+            "escalationRequired": false,
+            "documentation": {
+              "foldersRequired": ["01-objectives"],
+              "requiredFiles": "MINIMAL",
+              "optionalFiles": "NONE",
+              "validationLevel": "NONE"
+            },
+            "qualityGates": {
+              "critical": [],
+              "standard": [],
+              "advisory": [
+                "BASIC_TESTING"
+              ]
+            },
+            "workflows": {
+              "phases": ["CODE"],
+              "documentAsYouBuild": false,
+              "iterativeApproval": false,
+              "transparencyProtocol": "NONE"
+            },
+            "contextManagement": {
+              "defragThreshold": 75,
+              "orientThreshold": 85,
+              "checkpointFrequency": 180,
+              "scopeDeviationTolerance": "MAXIMUM"
+            },
+            "timeEstimateMultiplier": 1.0,
+            "riskTolerance": "MAXIMUM",
+            "rollbackRequired": false
+          }
+        }
+      }
+    },
+    "escalationMatrix": {
+      "type": "object",
+      "properties": {
+        "scopeDeviation": {
+          "MINOR": {
+            "threshold": "10%",
+            "action": "DOCUMENT_AND_CONTINUE",
+            "authority": "AI_LEAD"
+          },
+          "MODERATE": {
+            "threshold": "25%", 
+            "action": "REQUEST_APPROVAL",
+            "authority": "HUM_LEAD"
+          },
+          "MAJOR": {
+            "threshold": "25%+",
+            "action": "STOP_AND_ESCALATE",
+            "authority": "STAKEHOLDER"
+          }
+        },
+        "qualityGateFailure": {
+          "CRITICAL": {
+            "action": "BLOCK_PROGRESS",
+            "authority": "HUM_LEAD",
+            "escalation": "IMMEDIATE"
+          },
+          "STANDARD": {
+            "action": "REQUEST_WAIVER",
+            "authority": "HUM_LEAD", 
+            "escalation": "WITHIN_24H"
+          },
+          "ADVISORY": {
+            "action": "DOCUMENT_DEVIATION",
+            "authority": "AI_LEAD",
+            "escalation": "NONE"
+          }
+        },
+        "timeOverrun": {
+          "50%": {
+            "action": "NOTIFY_STAKEHOLDERS",
+            "authority": "HUM_LEAD"
+          },
+          "100%": {
+            "action": "REASSESS_SCOPE",
+            "authority": "STAKEHOLDER"
+          },
+          "200%": {
+            "action": "PROJECT_REVIEW",
+            "authority": "EXECUTIVE"
+          }
+        }
+      }
+    },
+    "validationRules": {
+      "type": "object",
+      "properties": {
+        "sevLevelValidation": {
+          "description": "Rules for validating SEV level assignments",
+          "rules": [
+            "Security implications always require SEV-0 or SEV-1",
+            "User-facing changes require minimum SEV-2",
+            "Breaking changes require minimum SEV-1", 
+            "Documentation-only changes can be SEV-4 or SEV-5",
+            "Infrastructure changes require minimum SEV-1"
+          ]
+        },
+        "autorityMatrixValidation": {
+          "description": "Rules for validating authority assignments",
+          "rules": [
+            "SEV-0 always requires HUM_LEAD authority",
+            "Critical quality gate failures require HUM_LEAD escalation",
+            "Major scope deviations require stakeholder approval",
+            "Emergency procedures override normal authority matrix"
+          ]
+        }
+      }
+    }
+  },
+  "required": ["sevLevels", "escalationMatrix", "validationRules"]
+}

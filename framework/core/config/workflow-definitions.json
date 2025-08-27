@@ -1,0 +1,621 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "BRTOPS Workflow Definitions v1.1.1",
+  "description": "Machine-readable workflow definitions for BRTOPS framework",
+  "type": "object",
+  "properties": {
+    "workflows": {
+      "type": "object",
+      "properties": {
+        "RCC": {
+          "type": "object",
+          "properties": {
+            "name": "Requirements & Context Collection",
+            "description": "6-phase transparency protocol with iterative approval loops",
+            "version": "1.1.000",
+            "phases": [
+              {
+                "id": "RCC-1",
+                "name": "Initial Context Gathering",
+                "description": "Collect project background and stakeholder information",
+                "requiredInputs": ["project_description", "stakeholder_info", "constraints"],
+                "outputs": ["context_summary", "stakeholder_matrix"],
+                "approvalRequired": false,
+                "estimatedDuration": "30-60 minutes"
+              },
+              {
+                "id": "RCC-2", 
+                "name": "Requirements Analysis",
+                "description": "Detailed requirements gathering and functional specification",
+                "requiredInputs": ["context_summary", "business_objectives"],
+                "outputs": ["functional_requirements", "non_functional_requirements"],
+                "approvalRequired": true,
+                "approvalAuthority": "HUM_LEAD",
+                "estimatedDuration": "1-2 hours"
+              },
+              {
+                "id": "RCC-3",
+                "name": "Acceptance Criteria Definition", 
+                "description": "Define clear, testable acceptance criteria",
+                "requiredInputs": ["functional_requirements", "quality_standards"],
+                "outputs": ["acceptance_criteria", "success_metrics"],
+                "approvalRequired": true,
+                "approvalAuthority": "HUM_LEAD",
+                "estimatedDuration": "45-90 minutes"
+              },
+              {
+                "id": "RCC-4",
+                "name": "Risk Assessment",
+                "description": "Technical, operational, and business risk analysis",
+                "requiredInputs": ["requirements", "constraints", "technical_environment"],
+                "outputs": ["risk_matrix", "mitigation_strategies"],
+                "approvalRequired": true,
+                "approvalAuthority": "COLLAB",
+                "estimatedDuration": "30-60 minutes"
+              },
+              {
+                "id": "RCC-5",
+                "name": "Resource Planning",
+                "description": "Time, team, and resource estimation",
+                "requiredInputs": ["requirements", "risk_assessment", "team_capacity"],
+                "outputs": ["resource_plan", "timeline_estimate", "dependency_map"],
+                "approvalRequired": true,
+                "approvalAuthority": "HUM_LEAD",
+                "estimatedDuration": "45-60 minutes"
+              },
+              {
+                "id": "RCC-6",
+                "name": "RCC Validation & Sign-off",
+                "description": "Final validation and formal approval to proceed",
+                "requiredInputs": ["all_previous_outputs", "stakeholder_feedback"],
+                "outputs": ["rcc_completion_report", "go_plan_authorization"],
+                "approvalRequired": true,
+                "approvalAuthority": "HUM_LEAD",
+                "estimatedDuration": "15-30 minutes"
+              }
+            ],
+            "qualityGates": [
+              "REQUIREMENTS_COMPLETENESS",
+              "STAKEHOLDER_ALIGNMENT", 
+              "RISK_ASSESSMENT_COMPLETE",
+              "RESOURCE_PLAN_APPROVED"
+            ],
+            "documentation": {
+              "requiredFiles": ["requirements.md", "context.md", "constraints.md", "risk-assessment.md"],
+              "outputFolder": "01-objectives"
+            },
+            "nextWorkflow": "PLAN"
+          }
+        },
+        "PLAN": {
+          "type": "object",
+          "properties": {
+            "name": "Strategic Planning & Architecture",
+            "description": "Technical diagram generation with dual-format structure",
+            "version": "1.1.000",
+            "phases": [
+              {
+                "id": "PLAN-1",
+                "name": "Architecture Planning",
+                "description": "High-level system design and technical approach",
+                "requiredInputs": ["rcc_outputs", "technical_constraints"],
+                "outputs": ["system_architecture", "technical_approach"],
+                "approvalRequired": true,
+                "approvalAuthority": "HUM_LEAD",
+                "estimatedDuration": "1-2 hours"
+              },
+              {
+                "id": "PLAN-2",
+                "name": "Technical Design",
+                "description": "Detailed technical specifications and component design",
+                "requiredInputs": ["system_architecture", "requirements"],
+                "outputs": ["detailed_design", "component_specifications"],
+                "approvalRequired": true,
+                "approvalAuthority": "COLLAB",
+                "estimatedDuration": "2-3 hours"
+              },
+              {
+                "id": "PLAN-3",
+                "name": "Integration Planning",
+                "description": "Define integration points and data flow",
+                "requiredInputs": ["detailed_design", "system_context"],
+                "outputs": ["integration_design", "data_flow_specs"],
+                "approvalRequired": true,
+                "approvalAuthority": "COLLAB",
+                "estimatedDuration": "1-2 hours"
+              },
+              {
+                "id": "PLAN-4",
+                "name": "Diagram Generation",
+                "description": "Create technical diagrams with dual-format structure",
+                "requiredInputs": ["all_design_outputs"],
+                "outputs": ["system_diagram", "component_diagram", "data_flow_diagram", "deployment_diagram"],
+                "approvalRequired": true,
+                "approvalAuthority": "HUM_LEAD",
+                "estimatedDuration": "1-2 hours",
+                "diagramTypes": [
+                  "SYSTEM_OVERVIEW",
+                  "COMPONENT_ARCHITECTURE", 
+                  "DATA_FLOW",
+                  "DEPLOYMENT_ARCHITECTURE"
+                ]
+              }
+            ],
+            "qualityGates": [
+              "ARCHITECTURE_REVIEW",
+              "TECHNICAL_FEASIBILITY",
+              "INTEGRATION_VALIDATION",
+              "DIAGRAM_COMPLETENESS"
+            ],
+            "documentation": {
+              "requiredFiles": ["system-design.md", "technical-design.md", "integration-points.md"],
+              "outputFolder": "03-architecture-design"
+            },
+            "nextWorkflow": "CODE"
+          }
+        },
+        "CODE": {
+          "type": "object",
+          "properties": {
+            "name": "Development & Implementation", 
+            "description": "Document-as-you-build with context management integration",
+            "version": "1.1.000",
+            "features": {
+              "documentAsYouBuild": true,
+              "contextManagement": true,
+              "scopeTracking": true,
+              "realTimeDocumentation": true
+            },
+            "phases": [
+              {
+                "id": "CODE-1",
+                "name": "Implementation Setup",
+                "description": "Environment setup and implementation kickoff",
+                "requiredInputs": ["plan_outputs", "development_environment"],
+                "outputs": ["environment_setup", "implementation_plan"],
+                "approvalRequired": false,
+                "estimatedDuration": "30-60 minutes"
+              },
+              {
+                "id": "CODE-2",
+                "name": "Core Implementation",
+                "description": "Primary feature development with real-time documentation",
+                "requiredInputs": ["implementation_plan", "technical_design"],
+                "outputs": ["core_implementation", "implementation_log"],
+                "approvalRequired": false,
+                "contextManagement": {
+                  "defragTrigger": "75%",
+                  "orientTrigger": "85%"
+                },
+                "estimatedDuration": "variable"
+              },
+              {
+                "id": "CODE-3",
+                "name": "Integration Implementation",
+                "description": "External system integration and API implementation",
+                "requiredInputs": ["core_implementation", "integration_specs"],
+                "outputs": ["integration_code", "api_implementation"],
+                "approvalRequired": false,
+                "estimatedDuration": "variable"
+              },
+              {
+                "id": "CODE-4",
+                "name": "Testing Implementation",
+                "description": "Unit tests, integration tests, and validation code",
+                "requiredInputs": ["implementation_code", "test_requirements"],
+                "outputs": ["test_suite", "validation_code"],
+                "approvalRequired": false,
+                "estimatedDuration": "50% of development time"
+              },
+              {
+                "id": "CODE-5",
+                "name": "Documentation & Code Review",
+                "description": "Code documentation, peer review, and quality validation",
+                "requiredInputs": ["complete_implementation", "test_results"],
+                "outputs": ["documented_code", "review_results"],
+                "approvalRequired": true,
+                "approvalAuthority": "PEER_REVIEW",
+                "estimatedDuration": "1-2 hours"
+              }
+            ],
+            "documentAsYouBuild": {
+              "requiredFiles": [
+                "implementation-log.md",
+                "code-decisions.md", 
+                "testing-strategy.md",
+                "integration-notes.md",
+                "performance-notes.md"
+              ],
+              "updateFrequency": "REAL_TIME",
+              "outputFolder": "04-development"
+            },
+            "contextManagement": {
+              "commands": ["DEFRAG", "ORIENT"],
+              "scopeTracking": true,
+              "deviationAlerts": ["MINOR", "MODERATE", "MAJOR"]
+            },
+            "qualityGates": [
+              "CODE_REVIEW",
+              "UNIT_TESTS",
+              "INTEGRATION_TESTS",
+              "SECURITY_SCAN"
+            ],
+            "nextWorkflow": "FINAL"
+          }
+        },
+        "FINAL": {
+          "type": "object",
+          "properties": {
+            "name": "Quality Assurance & Completion",
+            "description": "Document-as-you-validate with 3-tier quality gates",
+            "version": "1.1.000",
+            "features": {
+              "documentAsYouValidate": true,
+              "threeTierQualityGates": true,
+              "productionReadiness": true
+            },
+            "phases": [
+              {
+                "id": "FINAL-1",
+                "name": "Quality Gate Validation", 
+                "description": "Execute all required quality gates based on SEV level",
+                "requiredInputs": ["code_implementation", "test_results"],
+                "outputs": ["quality_gate_results", "compliance_report"],
+                "approvalRequired": true,
+                "approvalAuthority": "COLLAB",
+                "estimatedDuration": "2-4 hours"
+              },
+              {
+                "id": "FINAL-2",
+                "name": "Performance Validation",
+                "description": "Performance testing and optimization validation",
+                "requiredInputs": ["implementation", "performance_requirements"],
+                "outputs": ["performance_report", "optimization_recommendations"],
+                "approvalRequired": true,
+                "approvalAuthority": "COLLAB",
+                "estimatedDuration": "1-2 hours"
+              },
+              {
+                "id": "FINAL-3",
+                "name": "Security Validation",
+                "description": "Security testing and vulnerability assessment",
+                "requiredInputs": ["implementation", "security_requirements"],
+                "outputs": ["security_report", "vulnerability_assessment"],
+                "approvalRequired": true,
+                "approvalAuthority": "HUM_LEAD",
+                "estimatedDuration": "1-2 hours"
+              },
+              {
+                "id": "FINAL-4",
+                "name": "Production Readiness",
+                "description": "Final production readiness assessment and certification",
+                "requiredInputs": ["all_validation_results"],
+                "outputs": ["readiness_certification", "deployment_approval"],
+                "approvalRequired": true,
+                "approvalAuthority": "HUM_LEAD",
+                "estimatedDuration": "30-60 minutes"
+              }
+            ],
+            "documentAsYouValidate": {
+              "requiredFiles": [
+                "quality-gate-results.md",
+                "performance-validation.md",
+                "security-validation.md",
+                "production-readiness.md",
+                "compliance-report.md",
+                "final-certification.md"
+              ],
+              "outputFolder": "04-development"
+            },
+            "qualityGateTiers": {
+              "CRITICAL": "Must pass to proceed",
+              "STANDARD": "Should pass, waiver possible",
+              "ADVISORY": "Best practice, document deviation"
+            },
+            "qualityGates": [
+              "SECURITY_VALIDATION",
+              "PERFORMANCE_VALIDATION", 
+              "COMPLIANCE_CHECK",
+              "PRODUCTION_READINESS"
+            ],
+            "nextWorkflow": "VAL"
+          }
+        },
+        "VAL": {
+          "type": "object",
+          "properties": {
+            "name": "Post-deployment Validation",
+            "description": "7-phase post-deployment validation framework",
+            "version": "1.1.000",
+            "phases": [
+              {
+                "id": "VAL-1",
+                "name": "Deployment Validation",
+                "description": "Verify successful deployment and system availability",
+                "requiredInputs": ["deployment_status", "system_health"],
+                "outputs": ["deployment_report", "availability_confirmation"],
+                "approvalRequired": false,
+                "estimatedDuration": "15-30 minutes"
+              },
+              {
+                "id": "VAL-2",
+                "name": "Functional Validation", 
+                "description": "Validate all functional requirements and acceptance criteria",
+                "requiredInputs": ["requirements", "acceptance_criteria"],
+                "outputs": ["functional_validation_report"],
+                "approvalRequired": true,
+                "approvalAuthority": "HUM_LEAD",
+                "estimatedDuration": "1-2 hours"
+              },
+              {
+                "id": "VAL-3",
+                "name": "Performance Validation",
+                "description": "Validate performance requirements and benchmarks", 
+                "requiredInputs": ["performance_requirements", "benchmark_results"],
+                "outputs": ["performance_validation_report"],
+                "approvalRequired": true,
+                "approvalAuthority": "COLLAB",
+                "estimatedDuration": "30-60 minutes"
+              },
+              {
+                "id": "VAL-4",
+                "name": "User Experience Validation",
+                "description": "Validate user experience and interface requirements",
+                "requiredInputs": ["ux_requirements", "user_feedback"],
+                "outputs": ["ux_validation_report"],
+                "approvalRequired": true,
+                "approvalAuthority": "HUM_LEAD",
+                "estimatedDuration": "1-2 hours"
+              },
+              {
+                "id": "VAL-5",
+                "name": "Business Requirements Validation",
+                "description": "Validate business objectives and success criteria",
+                "requiredInputs": ["business_requirements", "success_metrics"],
+                "outputs": ["business_validation_report"],
+                "approvalRequired": true,
+                "approvalAuthority": "HUM_LEAD",
+                "estimatedDuration": "30-60 minutes"
+              },
+              {
+                "id": "VAL-6",
+                "name": "Integration Validation",
+                "description": "Validate system integration and external dependencies",
+                "requiredInputs": ["integration_requirements", "dependency_status"],
+                "outputs": ["integration_validation_report"],
+                "approvalRequired": true,
+                "approvalAuthority": "COLLAB",
+                "estimatedDuration": "45-90 minutes"
+              },
+              {
+                "id": "VAL-7",
+                "name": "Final Certification",
+                "description": "Complete validation certification and sign-off",
+                "requiredInputs": ["all_validation_reports"],
+                "outputs": ["validation_certification", "production_approval"],
+                "approvalRequired": true,
+                "approvalAuthority": "HUM_LEAD",
+                "estimatedDuration": "15-30 minutes"
+              }
+            ],
+            "specializedCommands": [
+              "VALIDATE PERFORMANCE",
+              "VALIDATE UX", 
+              "VALIDATE BUSINESS",
+              "VALIDATE SCOPE"
+            ],
+            "documentation": {
+              "requiredFiles": [
+                "deployment-validation.md",
+                "functional-validation.md",
+                "performance-validation.md",
+                "ux-validation.md",
+                "business-validation.md",
+                "integration-validation.md",
+                "validation-certification.md"
+              ],
+              "outputFolder": "07-readiness"
+            },
+            "qualityGates": [
+              "DEPLOYMENT_SUCCESS",
+              "FUNCTIONAL_COMPLIANCE",
+              "PERFORMANCE_BENCHMARKS",
+              "USER_ACCEPTANCE"
+            ],
+            "nextWorkflow": "RELEASE"
+          }
+        },
+        "RELEASE": {
+          "type": "object",
+          "properties": {
+            "name": "System-Level Deployment Orchestration",
+            "description": "Complete system-level release management with cross-feature aggregation",
+            "version": "1.1.000",
+            "scope": "SYSTEM_LEVEL",
+            "phases": [
+              {
+                "id": "RELEASE-1",
+                "name": "Release Package Assembly",
+                "description": "Aggregate all feature VAL results into system release package",
+                "requiredInputs": ["all_feature_val_results", "system_requirements"],
+                "outputs": ["release_package", "aggregated_validation"],
+                "approvalRequired": true,
+                "approvalAuthority": "HUM_LEAD",
+                "estimatedDuration": "1-2 hours"
+              },
+              {
+                "id": "RELEASE-2",
+                "name": "System-Level Validation",
+                "description": "Cross-feature integration and system-wide testing",
+                "requiredInputs": ["release_package", "system_architecture"],
+                "outputs": ["system_validation_report"],
+                "approvalRequired": true,
+                "approvalAuthority": "HUM_LEAD",
+                "estimatedDuration": "2-4 hours"
+              },
+              {
+                "id": "RELEASE-3",
+                "name": "Deployment Preparation",
+                "description": "Infrastructure preparation and deployment readiness",
+                "requiredInputs": ["system_validation", "infrastructure_requirements"],
+                "outputs": ["deployment_plan", "rollback_procedures"],
+                "approvalRequired": true,
+                "approvalAuthority": "HUM_LEAD",
+                "estimatedDuration": "1-2 hours"
+              },
+              {
+                "id": "RELEASE-4",
+                "name": "Pre-Deployment Validation",
+                "description": "Final pre-deployment checks and GO/NO-GO decision",
+                "requiredInputs": ["deployment_plan", "readiness_checklist"],
+                "outputs": ["go_nogo_decision", "deployment_authorization"],
+                "approvalRequired": true,
+                "approvalAuthority": "HUM_LEAD",
+                "estimatedDuration": "30-60 minutes"
+              },
+              {
+                "id": "RELEASE-5",
+                "name": "System Deployment",
+                "description": "Execute deployment with real-time monitoring",
+                "requiredInputs": ["deployment_authorization", "deployment_scripts"],
+                "outputs": ["deployment_status", "deployment_metrics"],
+                "approvalRequired": false,
+                "estimatedDuration": "30 minutes - 2 hours"
+              },
+              {
+                "id": "RELEASE-6",
+                "name": "Post-Deployment Validation",
+                "description": "System health check and operational validation",
+                "requiredInputs": ["deployment_status", "monitoring_data"],
+                "outputs": ["system_health_report", "operational_status"],
+                "approvalRequired": true,
+                "approvalAuthority": "COLLAB",
+                "estimatedDuration": "30-60 minutes"
+              },
+              {
+                "id": "RELEASE-7",
+                "name": "Release Certification",
+                "description": "Final certification and stakeholder notification",
+                "requiredInputs": ["all_validation_results"],
+                "outputs": ["release_certification", "stakeholder_notification"],
+                "approvalRequired": true,
+                "approvalAuthority": "HUM_LEAD",
+                "estimatedDuration": "15-30 minutes"
+              }
+            ],
+            "releaseCommands": [
+              "RELEASE STATUS",
+              "RELEASE ROLLBACK", 
+              "RELEASE PAUSE",
+              "RELEASE RESUME",
+              "RELEASE ABORT",
+              "RELEASE VALIDATE"
+            ],
+            "documentation": {
+              "systemLevelDocs": [
+                "release-readiness-checklist.md",
+                "deployment-orchestration-plan.md", 
+                "rollback-procedures.md",
+                "system-validation-report.md",
+                "post-deployment-validation.md",
+                "release-notes.md",
+                "changelog.md"
+              ],
+              "outputFolder": "docs/01_application/6-releases/{version}"
+            },
+            "qualityGates": [
+              "SYSTEM_INTEGRATION",
+              "CROSS_FEATURE_VALIDATION",
+              "DEPLOYMENT_READINESS",
+              "ROLLBACK_CAPABILITY"
+            ],
+            "nextWorkflow": "DEBRIEF"
+          }
+        },
+        "DEBRIEF": {
+          "type": "object",
+          "properties": {
+            "name": "After Action Report & Retrospective",
+            "description": "Comprehensive knowledge capture and lessons learned",
+            "version": "1.1.000",
+            "scope": "FEATURE_OR_SYSTEM",
+            "phases": [
+              {
+                "id": "DEBRIEF-1",
+                "name": "Performance Analysis",
+                "description": "Analyze actual vs. planned performance and outcomes",
+                "requiredInputs": ["project_metrics", "original_estimates"],
+                "outputs": ["performance_analysis", "variance_report"],
+                "approvalRequired": false,
+                "estimatedDuration": "30-60 minutes"
+              },
+              {
+                "id": "DEBRIEF-2", 
+                "name": "Lessons Learned Capture",
+                "description": "Document key insights and knowledge gained",
+                "requiredInputs": ["project_experience", "team_feedback"],
+                "outputs": ["lessons_learned", "best_practices"],
+                "approvalRequired": false,
+                "estimatedDuration": "45-90 minutes"
+              },
+              {
+                "id": "DEBRIEF-3",
+                "name": "Process Improvement Recommendations",
+                "description": "Identify process improvements and future enhancements",
+                "requiredInputs": ["lessons_learned", "process_observations"],
+                "outputs": ["improvement_recommendations", "process_updates"],
+                "approvalRequired": true,
+                "approvalAuthority": "HUM_LEAD",
+                "estimatedDuration": "30-60 minutes"
+              },
+              {
+                "id": "DEBRIEF-4",
+                "name": "Knowledge Transfer",
+                "description": "Prepare knowledge transfer and team sharing",
+                "requiredInputs": ["all_debrief_outputs"],
+                "outputs": ["knowledge_transfer_plan", "team_presentation"],
+                "approvalRequired": false,
+                "estimatedDuration": "30-45 minutes"
+              }
+            ],
+            "documentation": {
+              "requiredFiles": [
+                "performance-analysis.md",
+                "lessons-learned.md",
+                "best-practices.md", 
+                "improvement-recommendations.md",
+                "knowledge-transfer.md"
+              ],
+              "outputFolder": "06-key_learnings"
+            },
+            "qualityGates": [
+              "COMPLETE_DOCUMENTATION",
+              "KNOWLEDGE_CAPTURE",
+              "IMPROVEMENT_IDENTIFICATION"
+            ],
+            "nextWorkflow": null
+          }
+        }
+      }
+    },
+    "workflowConnections": {
+      "type": "object",
+      "properties": {
+        "standardFlow": ["RCC", "PLAN", "CODE", "FINAL", "VAL", "DEBRIEF"],
+        "systemReleaseFlow": ["[ALL_FEATURES_VAL_COMPLETE]", "RELEASE", "DEBRIEF"],
+        "minimalFlow": ["RCC", "CODE", "FINAL"],
+        "emergencyFlow": ["CODE", "FINAL", "RELEASE"]
+      }
+    },
+    "contextManagement": {
+      "type": "object",
+      "properties": {
+        "globalCommands": ["DEFRAG", "ORIENT", "CHECKPOINT", "RESTORE"],
+        "scopeCommands": ["SCOPE CHECK", "SCOPE ALERT", "SCOPE APPROVE", "SCOPE RESET"],
+        "validationCommands": ["VALIDATE PERFORMANCE", "VALIDATE UX", "VALIDATE BUSINESS", "VALIDATE SCOPE"],
+        "emergencyCommands": ["HUM CALL", "ABORT", "EMERGENCY RESTORE"]
+      }
+    }
+  },
+  "required": ["workflows", "workflowConnections", "contextManagement"]
+}

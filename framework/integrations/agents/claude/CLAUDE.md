@@ -1,12 +1,12 @@
-# BRTOPS Framework Configuration for Claude v1.0.004
-**🛩️  COMMAND NORMALIZATION & ENHANCED OPERATIONS**
+# BRTOPS Framework Configuration for Claude v1.1.1
+**🛩️  CLOSE AIR SUPPORT FOR YOUR AGENTIC-ENABLED TEAMS**
 
 ## Core Principles
 
 ### 1. Follow BRTOPS Command Structure
 **Rule**: Recognize and respond to all BRTOPS commands exactly as specified  
 **Application**: Use military/FlightOps terminology for clear communication  
-**Commands**: RCC, PLAN, CODE, FINAL, VAL, DEBRIEF, ALERT, STANDDOWN, GOFLIGHT, SITREP
+**Commands**: RCC, PLAN, CODE, FINAL, VAL, RELEASE, DEBRIEF, ALERT, STANDDOWN, GOFLIGHT, SITREP
 
 ### 2. Guide System Integration
 **Rule**: Implement adaptive guidance based on user settings  

@@ -1,0 +1,291 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "BRTOPS Template Mappings v1.1.1",
+  "description": "Template selection and generation mappings for BRTOPS framework",
+  "type": "object",
+  "properties": {
+    "templateLibrary": {
+      "type": "object",
+      "properties": {
+        "basePath": "/templates",
+        "structure": {
+          "documentation": "/templates/documentation",
+          "documents": "/templates/documents",
+          "projectConfigs": "/templates/project-configs",
+          "projectStructures": "/templates/project-structures"
+        }
+      }
+    },
+    "sevLevelTemplates": {
+      "type": "object",
+      "properties": {
+        "SEV-0": {
+          "requiredFolders": ["01-objectives", "02-analysis", "03-architecture-design", "04-development", "05-debugging", "06-key_learnings", "07-readiness"],
+          "requiredFiles": {
+            "01-objectives": ["requirements.md", "context.md", "constraints.md", "stakeholders.md", "assumptions.md"],
+            "02-analysis": ["risk-assessment.md", "impact-analysis.md", "technology-decisions.md", "alternatives-considered.md", "feasibility-study.md", "cost-analysis.md"],
+            "03-architecture-design": ["system-design.md", "data-model.md", "integration-points.md", "api-design.md", "security-design.md", "performance-design.md", "ui-ux-design.md"],
+            "04-development": ["implementation-log.md", "code-changes.md", "testing-strategy.md", "development-notes.md", "peer-review-feedback.md", "integration-testing.md", "deployment-notes.md"],
+            "05-debugging": ["issues-encountered.md", "resolution-log.md", "performance-issues.md", "integration-problems.md", "user-reported-issues.md", "troubleshooting-guide.md"],
+            "06-key_learnings": ["lessons-learned.md", "best-practices.md", "future-improvements.md", "technical-debt.md", "team-insights.md", "tool-evaluation.md", "knowledge-transfer.md"],
+            "07-readiness": ["validation-report.md", "deployment-readiness.md", "release-notes.md", "performance-validation.md", "security-validation.md", "user-acceptance-testing.md", "rollback-procedures.md"]
+          },
+          "templateComplexity": "COMPREHENSIVE",
+          "validationLevel": "MAXIMUM"
+        },
+        "SEV-1": {
+          "requiredFolders": ["01-objectives", "02-analysis", "03-architecture-design", "04-development", "05-debugging", "06-key_learnings", "07-readiness"],
+          "requiredFiles": {
+            "01-objectives": ["requirements.md", "context.md", "constraints.md", "stakeholders.md"],
+            "02-analysis": ["risk-assessment.md", "impact-analysis.md", "technology-decisions.md", "alternatives-considered.md"],
+            "03-architecture-design": ["system-design.md", "data-model.md", "integration-points.md", "api-design.md", "security-design.md"],
+            "04-development": ["implementation-log.md", "code-changes.md", "testing-strategy.md", "development-notes.md", "peer-review-feedback.md"],
+            "05-debugging": ["issues-encountered.md", "resolution-log.md", "performance-issues.md"],
+            "06-key_learnings": ["lessons-learned.md", "best-practices.md", "future-improvements.md", "technical-debt.md"],
+            "07-readiness": ["validation-report.md", "deployment-readiness.md", "release-notes.md", "performance-validation.md"]
+          },
+          "templateComplexity": "DETAILED",
+          "validationLevel": "HIGH"
+        },
+        "SEV-2": {
+          "requiredFolders": ["01-objectives", "02-analysis", "03-architecture-design", "04-development", "06-key_learnings", "07-readiness"],
+          "requiredFiles": {
+            "01-objectives": ["requirements.md", "context.md", "constraints.md"],
+            "02-analysis": ["risk-assessment.md", "impact-analysis.md", "technology-decisions.md"],
+            "03-architecture-design": ["system-design.md", "data-model.md", "integration-points.md"],
+            "04-development": ["implementation-log.md", "code-changes.md", "testing-strategy.md"],
+            "06-key_learnings": ["lessons-learned.md", "best-practices.md", "future-improvements.md"],
+            "07-readiness": ["validation-report.md", "deployment-readiness.md", "release-notes.md"]
+          },
+          "templateComplexity": "STANDARD",
+          "validationLevel": "STANDARD"
+        },
+        "SEV-3": {
+          "requiredFolders": ["01-objectives", "02-analysis", "04-development", "06-key_learnings", "07-readiness"],
+          "requiredFiles": {
+            "01-objectives": ["requirements.md", "context.md"],
+            "02-analysis": ["risk-assessment.md"],
+            "04-development": ["implementation-log.md", "code-changes.md"],
+            "06-key_learnings": ["lessons-learned.md"],
+            "07-readiness": ["validation-report.md", "release-notes.md"]
+          },
+          "templateComplexity": "BASIC",
+          "validationLevel": "BASIC"
+        },
+        "SEV-4": {
+          "requiredFolders": ["01-objectives", "04-development", "06-key_learnings"],
+          "requiredFiles": {
+            "01-objectives": ["requirements.md"],
+            "04-development": ["implementation-log.md"],
+            "06-key_learnings": ["lessons-learned.md"]
+          },
+          "templateComplexity": "MINIMAL",
+          "validationLevel": "MINIMAL"
+        },
+        "SEV-5": {
+          "requiredFolders": ["01-objectives"],
+          "requiredFiles": {
+            "01-objectives": ["requirements.md"]
+          },
+          "templateComplexity": "TRIVIAL",
+          "validationLevel": "NONE"
+        }
+      }
+    },
+    "workflowTemplates": {
+      "type": "object",
+      "properties": {
+        "RCC": {
+          "documentAsYouBuild": false,
+          "realTimeDocumentation": true,
+          "templates": {
+            "context-gathering": "/templates/workflows/rcc/context-gathering-template.md",
+            "requirements-analysis": "/templates/workflows/rcc/requirements-analysis-template.md",
+            "stakeholder-matrix": "/templates/workflows/rcc/stakeholder-matrix-template.md",
+            "approval-loop": "/templates/workflows/rcc/approval-loop-template.md"
+          },
+          "outputFolder": "01-objectives"
+        },
+        "PLAN": {
+          "documentAsYouBuild": false,
+          "diagramGeneration": true,
+          "templates": {
+            "system-architecture": "/templates/workflows/plan/system-architecture-template.md",
+            "technical-design": "/templates/workflows/plan/technical-design-template.md",
+            "diagram-generation": "/templates/workflows/plan/diagram-generation-template.md",
+            "integration-planning": "/templates/workflows/plan/integration-planning-template.md"
+          },
+          "diagramTypes": [
+            "SYSTEM_OVERVIEW",
+            "COMPONENT_ARCHITECTURE",
+            "DATA_FLOW", 
+            "DEPLOYMENT_ARCHITECTURE"
+          ],
+          "outputFolder": "03-architecture-design"
+        },
+        "CODE": {
+          "documentAsYouBuild": true,
+          "realTimeDocumentation": true,
+          "contextManagement": true,
+          "templates": {
+            "implementation-log": "/templates/workflows/code/implementation-log-template.md",
+            "code-decisions": "/templates/workflows/code/code-decisions-template.md",
+            "testing-strategy": "/templates/workflows/code/testing-strategy-template.md",
+            "integration-notes": "/templates/workflows/code/integration-notes-template.md",
+            "performance-notes": "/templates/workflows/code/performance-notes-template.md"
+          },
+          "outputFolder": "04-development"
+        },
+        "FINAL": {
+          "documentAsYouValidate": true,
+          "qualityGateIntegration": true,
+          "templates": {
+            "quality-gate-results": "/templates/workflows/final/quality-gate-results-template.md",
+            "performance-validation": "/templates/workflows/final/performance-validation-template.md",
+            "security-validation": "/templates/workflows/final/security-validation-template.md",
+            "production-readiness": "/templates/workflows/final/production-readiness-template.md",
+            "compliance-report": "/templates/workflows/final/compliance-report-template.md",
+            "final-certification": "/templates/workflows/final/final-certification-template.md"
+          },
+          "outputFolder": "04-development"
+        },
+        "VAL": {
+          "documentAsYouValidate": true,
+          "specializedCommands": true,
+          "templates": {
+            "deployment-validation": "/templates/workflows/val/deployment-validation-template.md",
+            "functional-validation": "/templates/workflows/val/functional-validation-template.md",
+            "performance-validation": "/templates/workflows/val/performance-validation-template.md",
+            "ux-validation": "/templates/workflows/val/ux-validation-template.md",
+            "business-validation": "/templates/workflows/val/business-validation-template.md",
+            "integration-validation": "/templates/workflows/val/integration-validation-template.md",
+            "validation-certification": "/templates/workflows/val/validation-certification-template.md"
+          },
+          "outputFolder": "07-readiness"
+        },
+        "RELEASE": {
+          "systemLevel": true,
+          "crossFeatureAggregation": true,
+          "templates": {
+            "release-readiness-checklist": "/templates/workflows/release/release-readiness-checklist-template.md",
+            "deployment-orchestration-plan": "/templates/workflows/release/deployment-orchestration-plan-template.md",
+            "rollback-procedures": "/templates/workflows/release/rollback-procedures-template.md",
+            "system-validation-report": "/templates/workflows/release/system-validation-report-template.md",
+            "post-deployment-validation": "/templates/workflows/release/post-deployment-validation-template.md",
+            "release-notes": "/templates/workflows/release/release-notes-template.md",
+            "changelog": "/templates/workflows/release/changelog-template.md"
+          },
+          "outputFolder": "docs/01_application/6-releases/{version}"
+        },
+        "DEBRIEF": {
+          "knowledgeCapture": true,
+          "retrospective": true,
+          "templates": {
+            "performance-analysis": "/templates/workflows/debrief/performance-analysis-template.md",
+            "lessons-learned": "/templates/workflows/debrief/lessons-learned-template.md",
+            "best-practices": "/templates/workflows/debrief/best-practices-template.md",
+            "improvement-recommendations": "/templates/workflows/debrief/improvement-recommendations-template.md",
+            "knowledge-transfer": "/templates/workflows/debrief/knowledge-transfer-template.md"
+          ],
+          "outputFolder": "06-key_learnings"
+        }
+      }
+    },
+    "projectTypeTemplates": {
+      "type": "object", 
+      "properties": {
+        "SOFTWARE": {
+          "defaultStructure": "7-FOLDER",
+          "requiredFolders": ["01-objectives", "02-analysis", "03-architecture-design", "04-development", "05-debugging", "06-key_learnings", "07-readiness"],
+          "additionalFolders": ["testing", "deployment", "monitoring"],
+          "configTemplate": "/templates/project-configs/software-project/BRTOPS.md"
+        },
+        "DOCS": {
+          "defaultStructure": "7-FOLDER",
+          "requiredFolders": ["01-objectives", "02-analysis", "04-development", "06-key_learnings", "07-readiness"],
+          "additionalFolders": ["content", "publishing", "review"],
+          "configTemplate": "/templates/project-configs/docs-project/BRTOPS.md"
+        },
+        "RESEARCH": {
+          "defaultStructure": "7-FOLDER",
+          "requiredFolders": ["01-objectives", "02-analysis", "04-development", "06-key_learnings", "07-readiness"],
+          "additionalFolders": ["data", "analysis", "findings"],
+          "configTemplate": "/templates/project-configs/research-project/BRTOPS.md"
+        },
+        "CREATIVE": {
+          "defaultStructure": "7-FOLDER",
+          "requiredFolders": ["01-objectives", "04-development", "06-key_learnings", "07-readiness"],
+          "additionalFolders": ["assets", "iteration", "review"],
+          "configTemplate": "/templates/project-configs/creative-project/BRTOPS.md"
+        }
+      }
+    },
+    "templateGeneration": {
+      "type": "object",
+      "properties": {
+        "autoGeneration": {
+          "enabled": true,
+          "triggers": ["INIT_FEATURE", "INIT_PROJECT", "PHASE_TRANSITION"],
+          "validationRequired": true
+        },
+        "customization": {
+          "enabled": true,
+          "inheritFromProject": true,
+          "userOverrides": true
+        },
+        "validation": {
+          "completenessCheck": true,
+          "sevLevelCompliance": true,
+          "templateIntegrity": true,
+          "crossReferenceValidation": true
+        }
+      }
+    },
+    "templateVariables": {
+      "type": "object",
+      "properties": {
+        "global": {
+          "PROJECT_NAME": "Inherited from project configuration",
+          "FRAMEWORK_VERSION": "1.1.1",
+          "CREATION_DATE": "Auto-generated timestamp",
+          "AUTHOR": "User or team identifier",
+          "SEV_LEVEL": "Feature or project SEV level"
+        },
+        "workflow": {
+          "WORKFLOW_NAME": "Current workflow name",
+          "PHASE_NAME": "Current phase name",
+          "PREVIOUS_OUTPUTS": "Outputs from previous phases",
+          "APPROVAL_AUTHORITY": "Required approval authority",
+          "ESTIMATED_DURATION": "Phase duration estimate"
+        },
+        "context": {
+          "CONTEXT_UTILIZATION": "Current context usage percentage",
+          "SESSION_DURATION": "Current session duration",
+          "DEFRAG_STATUS": "Context optimization status",
+          "ORIENT_STATUS": "Context restoration status"
+        }
+      }
+    },
+    "integrationPoints": {
+      "type": "object",
+      "properties": {
+        "git": {
+          "branchNaming": "feature/sev-{SEV_LEVEL}-{FEATURE_NAME}",
+          "commitTemplates": "/templates/git/commit-templates.md",
+          "prTemplates": "/templates/git/pr-template.md"
+        },
+        "qualityGates": {
+          "gateTemplates": "/templates/quality-gates/",
+          "validationTemplates": "/templates/validation/",
+          "reportTemplates": "/templates/reports/"
+        },
+        "contextManagement": {
+          "checkpointTemplates": "/templates/context/checkpoint-template.md",
+          "defragTemplates": "/templates/context/defrag-report-template.md",
+          "orientTemplates": "/templates/context/orient-summary-template.md"
+        }
+      }
+    }
+  },
+  "required": ["templateLibrary", "sevLevelTemplates", "workflowTemplates", "projectTypeTemplates"]
+}

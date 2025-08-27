@@ -1,0 +1,313 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "BRTOPS Configuration Schema v1.1.1",
+  "description": "Core BRTOPS framework configuration for agentic team operations",
+  "type": "object",
+  "properties": {
+    "framework": {
+      "type": "object",
+      "properties": {
+        "version": {
+          "type": "string",
+          "pattern": "^\\d+\\.\\d+\\.\\d+$",
+          "description": "BRTOPS framework version"
+        },
+        "tagline": {
+          "type": "string",
+          "description": "Framework marketing tagline"
+        },
+        "mode": {
+          "type": "string",
+          "enum": ["DEVELOPMENT", "PRODUCTION", "TESTING"],
+          "description": "Framework operational mode"
+        }
+      },
+      "required": ["version", "tagline", "mode"]
+    },
+    "project": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Project name and identifier"
+        },
+        "type": {
+          "type": "string",
+          "enum": ["SOFTWARE", "DOCS", "RESEARCH", "CREATIVE"],
+          "description": "Project type classification"
+        },
+        "sevLevel": {
+          "type": "string",
+          "pattern": "^SEV-[0-5]$",
+          "description": "Project default SEV level"
+        },
+        "structure": {
+          "type": "string",
+          "enum": ["7-FOLDER", "6-FOLDER", "UNIVERSAL"],
+          "description": "Documentation structure type"
+        }
+      },
+      "required": ["name", "type", "sevLevel", "structure"]
+    },
+    "collaboration": {
+      "type": "object",
+      "properties": {
+        "defaultAuthority": {
+          "type": "string",
+          "enum": ["HUM_LEAD", "AI_LEAD", "COLLAB", "AUTO_GO"],
+          "description": "Default collaboration authority mode"
+        },
+        "guideMode": {
+          "type": "string",
+          "enum": ["ACTIVE", "BRIEF", "SILENT", "AUTO"],
+          "description": "Default guidance system mode"
+        },
+        "approvalWorkflow": {
+          "type": "boolean",
+          "description": "Enable approval workflow tracking"
+        },
+        "escalationEnabled": {
+          "type": "boolean",
+          "description": "Enable automatic escalation procedures"
+        }
+      },
+      "required": ["defaultAuthority", "guideMode"]
+    },
+    "workflows": {
+      "type": "object",
+      "properties": {
+        "enabled": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": ["RCC", "PLAN", "CODE", "FINAL", "VAL", "RELEASE", "DEBRIEF"]
+          },
+          "description": "Enabled BRTOPS workflows"
+        },
+        "phaseTransitions": {
+          "type": "string",
+          "enum": ["AUTOMATIC", "MANUAL", "APPROVAL_REQUIRED"],
+          "description": "Phase transition behavior"
+        },
+        "documentAsYouBuild": {
+          "type": "boolean",
+          "description": "Enable real-time documentation during development"
+        },
+        "qualityGatesEnabled": {
+          "type": "boolean",
+          "description": "Enable quality gate validation"
+        }
+      },
+      "required": ["enabled", "phaseTransitions"]
+    },
+    "contextManagement": {
+      "type": "object",
+      "properties": {
+        "defragThreshold": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100,
+          "description": "Context utilization percentage to trigger DEFRAG"
+        },
+        "orientThreshold": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100,
+          "description": "Context utilization percentage to trigger ORIENT"
+        },
+        "emergencyThreshold": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100,
+          "description": "Context utilization percentage to trigger emergency procedures"
+        },
+        "autoCheckpoint": {
+          "type": "boolean",
+          "description": "Enable automatic state checkpointing"
+        },
+        "checkpointInterval": {
+          "type": "number",
+          "description": "Minutes between automatic checkpoints"
+        },
+        "scopeTracking": {
+          "type": "boolean",
+          "description": "Enable scope deviation detection and management"
+        }
+      },
+      "required": ["defragThreshold", "orientThreshold", "emergencyThreshold"]
+    },
+    "qualityGates": {
+      "type": "object",
+      "properties": {
+        "sevLevelGates": {
+          "type": "object",
+          "patternProperties": {
+            "^SEV-[0-5]$": {
+              "type": "object",
+              "properties": {
+                "critical": {
+                  "type": "array",
+                  "items": {"type": "string"},
+                  "description": "Critical quality gates that must pass"
+                },
+                "standard": {
+                  "type": "array", 
+                  "items": {"type": "string"},
+                  "description": "Standard quality gates that should pass"
+                },
+                "advisory": {
+                  "type": "array",
+                  "items": {"type": "string"},
+                  "description": "Advisory quality gates for best practice"
+                }
+              }
+            }
+          }
+        },
+        "automatedValidation": {
+          "type": "boolean",
+          "description": "Enable automated quality gate validation"
+        },
+        "failureEscalation": {
+          "type": "boolean",
+          "description": "Enable escalation on quality gate failures"
+        }
+      }
+    },
+    "templates": {
+      "type": "object",
+      "properties": {
+        "templateLibrary": {
+          "type": "string",
+          "description": "Path to template library directory"
+        },
+        "autoGeneration": {
+          "type": "boolean",
+          "description": "Enable automatic template generation"
+        },
+        "customTemplates": {
+          "type": "object",
+          "patternProperties": {
+            ".*": {
+              "type": "string",
+              "description": "Path to custom template files"
+            }
+          }
+        },
+        "validationEnabled": {
+          "type": "boolean",
+          "description": "Enable template validation and completeness checking"
+        }
+      }
+    },
+    "integration": {
+      "type": "object",
+      "properties": {
+        "gitIntegration": {
+          "type": "boolean",
+          "description": "Enable Git workflow integration"
+        },
+        "branchNaming": {
+          "type": "string",
+          "pattern": "^[a-zA-Z0-9-_/{}/]+$",
+          "description": "Branch naming convention template"
+        },
+        "commitTemplates": {
+          "type": "boolean",
+          "description": "Enable BRTOPS commit message templates"
+        },
+        "hookIntegration": {
+          "type": "boolean",
+          "description": "Enable Git hook integration for quality gates"
+        },
+        "cicdIntegration": {
+          "type": "boolean",
+          "description": "Enable CI/CD pipeline integration"
+        }
+      }
+    },
+    "emergency": {
+      "type": "object",
+      "properties": {
+        "procedures": {
+          "type": "object",
+          "properties": {
+            "rollbackEnabled": {
+              "type": "boolean",
+              "description": "Enable emergency rollback procedures"
+            },
+            "escalationContacts": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "role": {"type": "string"},
+                  "contact": {"type": "string"},
+                  "escalationLevel": {"type": "integer"}
+                }
+              },
+              "description": "Emergency escalation contact information"
+            },
+            "crisisModeEnabled": {
+              "type": "boolean",
+              "description": "Enable crisis mode simplified protocols"
+            }
+          }
+        },
+        "monitoring": {
+          "type": "object",
+          "properties": {
+            "healthChecks": {
+              "type": "boolean",
+              "description": "Enable system health monitoring"
+            },
+            "performanceTracking": {
+              "type": "boolean",
+              "description": "Enable performance metrics tracking"
+            },
+            "alerting": {
+              "type": "boolean",
+              "description": "Enable automatic alerting for critical issues"
+            }
+          }
+        }
+      }
+    },
+    "customization": {
+      "type": "object",
+      "properties": {
+        "commandAliases": {
+          "type": "object",
+          "patternProperties": {
+            ".*": {
+              "type": "string",
+              "description": "Custom command aliases"
+            }
+          }
+        },
+        "workflowOverrides": {
+          "type": "object",
+          "description": "Custom workflow definitions and overrides"
+        },
+        "templateOverrides": {
+          "type": "object",
+          "description": "Custom template definitions and overrides"
+        },
+        "integrationHooks": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "trigger": {"type": "string"},
+              "action": {"type": "string"},
+              "enabled": {"type": "boolean"}
+            }
+          },
+          "description": "Custom integration hooks and automation"
+        }
+      }
+    }
+  },
+  "required": ["framework", "project", "collaboration", "workflows", "contextManagement"],
+  "additionalProperties": false
+}

@@ -1,7 +1,7 @@
-# BRTOPS v1.1.0
-## Military-Precision Development Operations for Human/AI Teams
+# BRTOPS v1.1.1
+## Close Air Support for your Agentic-enabled Teams
 
-[![Version](https://img.shields.io/badge/version-1.1.0-blue.svg)](https://github.com/bthompso/brtops/releases)
+[![Version](https://img.shields.io/badge/version-1.1.1-blue.svg)](https://github.com/bthompso/brtops/releases)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 [![Documentation](https://img.shields.io/badge/docs-complete-brightgreen.svg)](docs/)
 

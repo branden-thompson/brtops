@@ -1,4 +1,4 @@
-# BRTOPS v1.1.0 Enhanced Commands Reference
+# BRTOPS v1.1.1 Enhanced Commands Reference
 
 ## New Project Management Commands
 
@@ -11,7 +11,7 @@
 ### INIT FEATURE SEV-[X] [name]
 **Purpose**: Initialize feature within existing project  
 **Usage**: `INIT FEATURE SEV-1 user-authentication`  
-**Creates**: 6-folder structure, feature branch, documentation templates  
+**Creates**: 7-folder structure, feature branch, documentation templates  
 
 ### CREATE BRANCH [phase]
 **Purpose**: Create phase-appropriate branch with proper naming  
