@@ -100,9 +100,13 @@ The RELEASE (System-Level Deployment) phase orchestrates comprehensive system de
 │ ├─ 6.5 REPORT deployment progress to HUM LEAD (continuous) │
 │ ├─ 6.6 INTAKE HUM LEAD guidance on deployment issues       │
 │ ├─ 6.7 Execute rollback procedures if deployment fails     │
-│ ├─ 6.8 REPORT deployment completion status to HUM LEAD    │
-│ ├─ 6.9 DEPLOYMENT SUCCESS → Proceed to Phase 7            │
-│ └─ 6.10 DEPLOYMENT FAILURE → Execute rollback and assess  │
+│ ├─ 6.8 CREATE GITHUB RELEASE (for GitHub target environment)│
+│ │   ├─ 6.8.1 Create git tag with comprehensive annotations │
+│ │   ├─ 6.8.2 Push tag to origin repository                 │
+│ │   └─ 6.8.3 Create GitHub Release with release notes      │
+│ ├─ 6.9 REPORT deployment completion status to HUM LEAD    │
+│ ├─ 6.10 DEPLOYMENT SUCCESS → Proceed to Phase 7           │
+│ └─ 6.11 DEPLOYMENT FAILURE → Execute rollback and assess  │
 │                                                             │
 │ PHASE 7: POST-DEPLOYMENT SYSTEM VALIDATION & CERTIFICATION│
 │ ├─ 7.1 Execute system-wide operational validation          │
@@ -219,6 +223,12 @@ RELEASE v{version} to {target}
 - **Staging**: `Staging`, `Stage`, `UAT`
 - **Distribution**: `GitHub`, `App Store`, `NPM`, `Docker Hub`
 - **Testing**: `Testing`, `QA`, `Beta`
+
+### Environment-Specific Deployment Procedures
+- **GitHub**: Git tag creation + GitHub Release creation with release notes
+- **Production**: Infrastructure deployment + health monitoring + rollback readiness
+- **Staging**: Deployment validation + integration testing + UAT preparation
+- **App Store/Distribution**: Package preparation + metadata + submission procedures
 
 ## Context Management Integration
 
@@ -351,6 +361,29 @@ RELEASE phase is complete when:
 - **Support Documentation**: User-facing documentation and support procedures
 - **Compliance Records**: Complete audit trail and compliance verification documentation
 - **Performance Baselines**: System performance benchmarks for ongoing monitoring
+
+## Target Environment Deployment Procedures
+
+### GitHub Release Deployment
+1. **Git Tag Creation**: Create annotated tag with comprehensive release information
+2. **Repository Push**: Push main branch and tags to origin repository
+3. **GitHub Release Creation**: Use `gh release create` with title and release notes
+4. **Verification**: Confirm release visibility on GitHub repository and releases page
+5. **Documentation Update**: Update deployment validation with GitHub release URL
+
+### Production Deployment
+1. **Infrastructure Validation**: Verify production environment readiness
+2. **Deployment Execution**: Deploy according to orchestration plan
+3. **Health Monitoring**: Continuous monitoring during deployment process
+4. **Verification**: Confirm system operational status and performance metrics
+5. **Documentation Update**: Update deployment validation with production metrics
+
+### Staging/UAT Deployment
+1. **Environment Preparation**: Ensure staging environment matches production
+2. **Deployment Execution**: Deploy with comprehensive logging and monitoring
+3. **Integration Testing**: Execute cross-system integration validation
+4. **UAT Coordination**: Prepare environment for user acceptance testing
+5. **Documentation Update**: Update deployment validation with UAT readiness
 
 ## Emergency Procedures
 
