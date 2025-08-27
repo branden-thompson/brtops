@@ -54,14 +54,14 @@ CLEAR ALERT-1        # Clear specific alert (tactical)
 
 ### Project Management Commands (v1.0.004)
 - **"INIT PROJECT [TYPE] SEV-[X] [name]"** → Initialize new project with structure
-- **"INIT FEATURE SEV-[X] [name]"** → Initialize feature with 6-folder structure
+- **"INIT FEATURE SEV-[X] [name]"** → Initialize feature with 7-folder structure
 - **"CREATE BRANCH [phase]"** → Create phase-appropriate branch
 - **"COMMIT PHASE [phase] [message]"** → Structured commit with templates
 - **"MERGE READY"** → Validate merge readiness with quality gates
 - **"BRANCH CLEANUP"** → Clean up completed feature branches
 
 ### Documentation Commands (v1.0.004)
-- **"CREATE DOCS [feature-name]"** → Auto-create 6-folder structure
+- **"CREATE DOCS [feature-name]"** → Auto-create 7-folder structure
 - **"UPDATE DOCS [phase]"** → Update phase-specific documentation
 - **"ARCHIVE DOCS [feature-name]"** → Move completed docs to archive
 
@@ -71,7 +71,7 @@ CLEAR ALERT-1        # Clear specific alert (tactical)
 - **"SITREP BRANCHES"** → Branch status across project
 
 ### Structure Validation Commands (v1.0.004)
-- **"CHECK STRUCTURE"** → Validate project structure compliance
+- **"CHECK STRUCTURE"** → Validate project structure compliance (7-folder)
 - **"CHECK GATES"** → Validate quality gate status
 - **"CHECK BRANCHES"** → Validate branch health and compliance
 

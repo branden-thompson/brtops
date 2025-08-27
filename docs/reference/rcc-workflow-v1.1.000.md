@@ -38,7 +38,7 @@ The RCC (Requirements & Context Collection) phase is the foundational step in BR
 │     │       • SYSTEM level: application/{project-name}     │
 │     │       • FEATURE level: features/{project-name}       │
 │     │       • BUGFIX level: prompt user SYSTEM/FEATURE     │
-│     ├─ 2.2.4 Verify/create 6-folder structure per SEV     │
+│     ├─ 2.2.4 Verify/create 7-folder structure per SEV     │
 │     └─ 2.2.5 REPORT branch + folder details per SEV       │
 │                                                             │
 │ PHASE 3: REQUIREMENTS GATHERING & CLARIFICATION            │
@@ -112,13 +112,14 @@ The RCC (Requirements & Context Collection) phase is the foundational step in BR
 - **COLLAB**: Joint decision-making on ambiguous technical details
 
 ### Documentation Standards
-All documentation follows the enhanced 6-folder structure:
+All documentation follows the enhanced 7-folder structure:
 - **01-objectives/**: requirements.md, constraints.md, context.md
 - **02-analysis/**: risk-assessment.md
 - **03-architecture-design/**: (populated in PLAN phase)
 - **04-development/**: (populated in CODE phase)  
 - **05-debugging/**: (populated as needed)
 - **06-key_learnings/**: (populated in DEBRIEF phase)
+- **07-readiness/**: (populated in VAL phase)
 
 ## Branch Management Protocol
 
@@ -131,7 +132,7 @@ All documentation follows the enhanced 6-folder structure:
 1. Search for existing branches matching project scope
 2. If found, prompt HUM LEAD for continuation approval
 3. If new branch needed, follow naming conventions and folder structure
-4. Verify/create 6-folder structure per SEV requirements
+4. Verify/create 7-folder structure per SEV requirements
 
 ## Iterative Approval Loops
 

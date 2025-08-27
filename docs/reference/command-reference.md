@@ -35,7 +35,13 @@
 **Usage**: `VAL`, `GO VAL`, `INIT VAL`, `START VAL`  
 **Description**: "Post-deployment Validation"  
 **Next Phase**: DEBRIEF  
-**Authority**: Any user  
+**Authority**: Any user
+
+**Specialized VAL Commands**:
+- **"VALIDATE PERFORMANCE"** → Focus on operational validation (Phase 2)
+- **"VALIDATE UX"** → Focus on user experience validation (Phase 3)  
+- **"VALIDATE BUSINESS"** → Focus on business value validation (Phase 4)
+- **"VALIDATE SCOPE"** → Focus on scope verification (Phase 6)  
 
 ### DEBRIEF (Retrospective)
 **Purpose**: Retrospective using AAR (After Action Report)  
