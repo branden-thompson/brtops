@@ -6,7 +6,9 @@
 [![Documentation](https://img.shields.io/badge/docs-complete-brightgreen.svg)](docs/)
 [![Infrastructure](https://img.shields.io/badge/infrastructure-100%25-success.svg)](framework/)
 
-**BRTOPS** (Branden Thompson Operations) is a complete operational framework for Human-AI collaborative development, providing military-precision command structure, intelligent context management, and comprehensive system-level release management for agentic teams.
+**BRTOPS** is a complete operational framework for Human-AI collaborative development, providing military-precision command structure, intelligent context management, and comprehensive system-level release management for agentic teams.
+
+*Named after the distinctive sound of the GAU-8 Avenger rotary cannon on the A-10 Thunderbolt II - delivering close air support with precision and power.*
 
 ## 🎯 Mission Statement
 
